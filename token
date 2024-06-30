@@ -1,0 +1,87 @@
+use solana_sdk::signature::{Keypair, Signer};
+use solana_sdk::transaction::Transaction;
+use solana_sdk::pubkey::Pubkey;
+use solana_client::rpc_client::RpcClient;
+use spl_token::instruction::initialize_mint;
+use spl_token::instruction::mint_to;
+use solana_sdk::system_instruction;
+
+fn mint_spl_token() {
+    // Initialize RPC client
+    let rpc_client = RpcClient::new("https://api.mainnet-beta.solana.com");
+
+    // Load the payer keypair
+    let payer = Keypair::from_file("/payer/path/keypair.json").unwrap();
+
+    // Create a new token mint
+    let mint = Keypair::new();
+    let mint_pubkey = mint.pubkey();
+
+    // Initialize the mint
+    let recent_blockhash = rpc_client.get_recent_blockhash().unwrap().0;
+    let mint_rent = rpc_client.get_minimum_balance_for_rent_exemption(spl_token::state::Mint::LEN).unwrap();
+
+    let create_mint_account_ix = system_instruction::create_account(
+        &payer.pubkey(),
+        &mint_pubkey,
+        mint_rent,
+        spl_token::state::Mint::LEN as u64,
+        &spl_token::id(),
+    );
+
+    let initialize_mint_ix = initialize_mint(
+        &spl_token::id(),
+        &mint_pubkey,
+        &payer.pubkey(),
+        None,
+        9, // Number of decimal places
+    ).unwrap();
+
+    let mut transaction = Transaction::new_with_payer(
+        &[create_mint_account_ix, initialize_mint_ix],
+        Some(&payer.pubkey()),
+    );
+
+    transaction.sign(&[&payer, &mint], recent_blockhash);
+    rpc_client.send_and_confirm_transaction(&transaction).unwrap();
+
+    // Mint new tokens to an account
+    let token_account = Keypair::new();
+    let token_account_pubkey = token_account.pubkey();
+    let create_token_account_ix = system_instruction::create_account(
+        &payer.pubkey(),
+        &token_account_pubkey,
+        mint_rent,
+        spl_token::state::Account::LEN as u64,
+        &spl_token::id(),
+    );
+
+    let initialize_token_account_ix = spl_token::instruction::initialize_account(
+        &spl_token::id(),
+        &token_account_pubkey,
+        &mint_pubkey,
+        &payer.pubkey(),
+    ).unwrap();
+
+    let mint_to_ix = mint_to(
+        &spl_token::id(),
+        &mint_pubkey,
+        &token_account_pubkey,
+        &payer.pubkey(),
+        &[],
+        1000, // Amount to mint
+    ).unwrap();
+
+    let mut mint_transaction = Transaction::new_with_payer(
+        &[create_token_account_ix, initialize_token_account_ix, mint_to_ix],
+        Some(&payer.pubkey()),
+    );
+
+    mint_transaction.sign(&[&payer, &token_account], recent_blockhash);
+    rpc_client.send_and_confirm_transaction(&mint_transaction).unwrap();
+
+    println!("Mint address: {}", mint_pubkey);
+    println!("Token account address: {}", token_account_pubkey);
+}
+
+

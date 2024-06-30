@@ -1,0 +1,50 @@
+
+
+# Upload your asset (image, metadata)
+metaplex upload /path/to/assets --env mainnet-beta
+
+# Create a new NFT
+metaplex create_candy_machine -k /path/to/your/payer/keypair.json --env mainnet-beta
+
+use solana_sdk::signature::{Keypair, Signer};
+use solana_sdk::transaction::Transaction;
+use solana_sdk::pubkey::Pubkey;
+use solana_client::rpc_client::RpcClient;
+use spl_token::instruction::transfer_checked;
+use spl_token_metadata::state::Metadata;
+
+fn transfer_nft() {
+    // Initialize RPC client
+    let rpc_client = RpcClient::new("https://api.mainnet-beta.solana.com");
+
+    // Load the payer keypair
+    let payer = Keypair::from_file("/path/to/your/payer/keypair.json").unwrap();
+
+    // NFT mint address and token account addresses
+    let nft_mint = Pubkey::from_str("NftMintAddress").unwrap();
+    let sender_token_account = Pubkey::from_str("SenderTokenAccountAddress").unwrap();
+    let receiver_token_account = Pubkey::from_str("ReceiverTokenAccountAddress").unwrap();
+
+    // Transfer the NFT
+    let recent_blockhash = rpc_client.get_recent_blockhash().unwrap().0;
+    let transfer_ix = transfer_checked(
+        &spl_token::id(),
+        &sender_token_account,
+        &nft_mint,
+        &receiver_token_account,
+        &payer.pubkey(),
+        &[],
+        1, // Amount to transfer (1 NFT)
+        0, // Decimals (0 for NFTs)
+    ).unwrap();
+
+    let mut transaction = Transaction::new_with_payer(
+        &[transfer_ix],
+        Some(&payer.pubkey()),
+    );
+
+    transaction.sign(&[&payer], recent_blockhash);
+    rpc_client.send_and_confirm_transaction(&transaction).unwrap();
+
+    println!("NFT transferred from {} to {}", sender_token_account, receiver_token_account);
+}
