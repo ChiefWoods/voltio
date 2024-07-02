@@ -1,0 +1,23 @@
+{
+  "name": "voltio-backend",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "getMint": "node src/get-mint.js",
+    "mintTo": "node src/mint-token.js",
+    "upload": "node src/upload-asset.js",
+    "setMetadata": "node src/set-token-metadata.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@irys/sdk": "^0.2.6",
+    "@metaplex-foundation/mpl-token-metadata": "^2.13.0",
+    "@solana-developers/helpers": "^2.3.0",
+    "@solana/spl-token": "^0.4.7",
+    "@solana/web3.js": "^1.94.0"
+  }
+}
