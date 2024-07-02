@@ -1,0 +1,138 @@
+use solana_sdk::signature::{Keypair, Signer};
+use solana_sdk::transaction::Transaction;
+use solana_sdk::pubkey::Pubkey;
+use solana_client::rpc_client::RpcClient;
+use spl_token::instruction::initialize_mint;
+use solana_sdk::system_instruction;
+
+fn create_fractional_token() -> Pubkey {
+    // Initialize RPC client
+    let rpc_client = RpcClient::new("https://api.mainnet-beta.solana.com");
+
+    // Load the payer keypair
+    let payer = Keypair::from_file("/path/to/your/payer/keypair.json").unwrap();
+
+    // Create a new token mint for fractional tokens
+    let mint = Keypair::new();
+    let mint_pubkey = mint.pubkey();
+
+    // Initialize the mint
+    let recent_blockhash = rpc_client.get_latest_blockhash().unwrap();
+    let mint_rent = rpc_client.get_minimum_balance_for_rent_exemption(spl_token::state::Mint::LEN).unwrap();
+
+    let create_mint_account_ix = system_instruction::create_account(
+        &payer.pubkey(),
+        &mint_pubkey,
+        mint_rent,
+        spl_token::state::Mint::LEN as u64,
+        &spl_token::id(),
+    );
+
+    let initialize_mint_ix = initialize_mint(
+        &spl_token::id(),
+        &mint_pubkey,
+        &payer.pubkey(),
+        None,
+        0, // Number of decimal places for fractional tokens
+    ).unwrap();
+
+    let mut transaction = Transaction::new_with_payer(
+        &[create_mint_account_ix, initialize_mint_ix],
+        Some(&payer.pubkey()),
+    );
+
+    transaction.sign(&[&payer, &mint], recent_blockhash);
+    rpc_client.send_and_confirm_transaction(&transaction).unwrap();
+
+    println!("Fractional token mint address: {}", mint_pubkey);
+    mint_pubkey
+}
+use spl_token::instruction::mint_to;
+
+fn mint_fractional_tokens(fractional_mint: Pubkey, amount: u64) -> Pubkey {
+    // Initialize RPC client
+    let rpc_client = RpcClient::new("https://api.mainnet-beta.solana.com");
+
+    // Load the payer keypair
+    let payer = Keypair::from_file("/path/to/your/payer/keypair.json").unwrap();
+
+    // Create an associated token account for the fractional tokens
+    let token_account = Keypair::new();
+    let token_account_pubkey = token_account.pubkey();
+    let recent_blockhash = rpc_client.get_latest_blockhash().unwrap();
+    let token_rent = rpc_client.get_minimum_balance_for_rent_exemption(spl_token::state::Account::LEN).unwrap();
+
+    let create_token_account_ix = system_instruction::create_account(
+        &payer.pubkey(),
+        &token_account_pubkey,
+        token_rent,
+        spl_token::state::Account::LEN as u64,
+        &spl_token::id(),
+    );
+
+    let initialize_token_account_ix = spl_token::instruction::initialize_account(
+        &spl_token::id(),
+        &token_account_pubkey,
+        &fractional_mint,
+        &payer.pubkey(),
+    ).unwrap();
+
+    let mint_to_ix = mint_to(
+        &spl_token::id(),
+        &fractional_mint,
+        &token_account_pubkey,
+        &payer.pubkey(),
+        &[],
+        amount, // Amount of fractional tokens to mint
+    ).unwrap();
+
+    let mut transaction = Transaction::new_with_payer(
+        &[create_token_account_ix, initialize_token_account_ix, mint_to_ix],
+        Some(&payer.pubkey()),
+    );
+
+    transaction.sign(&[&payer, &token_account], recent_blockhash);
+    rpc_client.send_and_confirm_transaction(&transaction).unwrap();
+
+    println!("Fractional tokens minted to account: {}", token_account_pubkey);
+    token_account_pubkey
+}
+use spl_token::instruction::transfer;
+
+fn distribute_fractional_tokens(
+    fractional_mint: Pubkey, 
+    from_token_account: Pubkey, 
+    to_accounts: Vec<(Pubkey, u64)>
+) {
+    // Initialize RPC client
+    let rpc_client = RpcClient::new("https://api.mainnet-beta.solana.com");
+
+    // Load the payer keypair
+    let payer = Keypair::from_file("/path/to/your/payer/keypair.json").unwrap();
+
+    for (to_account, amount) in to_accounts {
+        let recent_blockhash = rpc_client.get_latest_blockhash().unwrap();
+
+        let transfer_ix = transfer(
+            &spl_token::id(),
+            &from_token_account,
+            &to_account,
+            &payer.pubkey(),
+            &[],
+            amount,
+        ).unwrap();
+
+        let mut transaction = Transaction::new_with_payer(
+            &[transfer_ix],
+            Some(&payer.pubkey()),
+        );
+
+        transaction.sign(&[&payer], recent_blockhash);
+        rpc_client.send_and_confirm_transaction(&transaction).unwrap();
+
+        println!("Transferred {} fractional tokens to account: {}", amount, to_account);
+    }
+}
+
+
+
