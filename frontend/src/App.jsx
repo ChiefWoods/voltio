@@ -6,7 +6,8 @@ import{ BrowserRouter,Routes,Route, } from 'react-router-dom'
 import {
   Homepage,
   IndiProject,
-  Profile
+  Profile,
+  Test,
 } from'./pages'
 
 
@@ -18,6 +19,7 @@ const App=()=>{
         <Route path="/" element={<Homepage/>}/>
         <Route path="/individualproject" element={<IndiProject/>}/>
         <Route path="/profile" element={<Profile/>}/>
+        <Route path="/test" element={<Test/>}/>
       </Routes>
     </BrowserRouter>
     </>
