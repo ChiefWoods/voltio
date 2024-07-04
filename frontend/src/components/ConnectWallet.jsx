@@ -46,7 +46,6 @@ const connectWallet = ({onClose}) => {
           onClick={onClose}
         />    
         </div>
-        
     </div>
   )
 }
