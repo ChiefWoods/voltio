@@ -8,6 +8,7 @@ import {
   IndiProject,
   Profile,
   Test,
+  Dashboard,
 } from'./pages'
 
 
@@ -17,6 +18,7 @@ const App=()=>{
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Homepage/>}/>
+        <Route path="/dashboard" element={<Dashboard/>}/>
         <Route path="/individualproject" element={<IndiProject/>}/>
         <Route path="/profile" element={<Profile/>}/>
         <Route path="/test" element={<Test/>}/>
