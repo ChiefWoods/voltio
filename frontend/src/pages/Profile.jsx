@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BackgroundImage } from '../components';
+import { BackgroundImage, TopBar } from '../components';
 import { IoGrid } from "react-icons/io5";
 import { FaList } from "react-icons/fa";
 import { profile, solar_panel1, token_voltio_png } from '../assets';
@@ -16,6 +16,7 @@ const Profile = () => {
 
     return (
         <BackgroundImage>
+          <TopBar currentPage='profile' />
             <div className="w-[60%] py-10">
                 <div className="flex flex-row items-center">
                     <img src={profile} className="w-[250px] rounded-full" />

@@ -1,13 +1,13 @@
 import React from 'react'
 import { solar_panel1 } from '../assets'
-import { BackgroundImage } from '../components'
+import { BackgroundImage, TopBar } from '../components'
 import { FaChevronCircleLeft,FaChevronCircleRight,FaBolt   } from "react-icons/fa";
 import { IoLocationSharp } from "react-icons/io5";
 
 const indi_project = () => {
   return (
     <BackgroundImage>
-        <div>
+      <TopBar currentPage='project' />
             <div className='flex flex-row mb-10 mt-[100px] items-center align-center place-content-center'>
                 <div className='flex items-center cursor-pointer'>
                     <FaChevronCircleLeft className='text-white text-[40px]'/>
@@ -70,7 +70,6 @@ const indi_project = () => {
                 </div>
             </div>
             
-        </div>
     </BackgroundImage>
   )
 }
