@@ -13,6 +13,7 @@ import backpack from './backpack.png'
 import phantom from './phantom.png'
 import metamask from './metamask.png'
 import solar_panel1 from './solar_panel1.png'
+import profile from './profile.jpg'
 
 
 export {
@@ -30,5 +31,6 @@ export {
   phantom,
   metamask,
   voltio_logo_white_png,
-  solar_panel1
+  solar_panel1,
+  profile
 }
