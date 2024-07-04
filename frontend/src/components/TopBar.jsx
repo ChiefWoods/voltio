@@ -23,7 +23,7 @@ const TopBar = ({
 
   return (
     <>
-      <div className="w-full text-white flex justify-between items-center bg-transparent px-[60px] py-[70px]">
+      <div className="w-full text-white flex justify-between items-center bg-transparent px-[60px] pt-[70px] pb-[10px]">
         <div className="flex items-center">
           <a href='/dashboard'>
             <img src={voltio_logo_white_png} alt="Voltio Logo" className="h-[60px] mr-4" />
@@ -32,11 +32,11 @@ const TopBar = ({
         </div>
         <div className="flex items-center">
           <span className="truncate mr-[30px] flex items-center">
-            <FaWallet className='mr-[20px]' />
+            <FaWallet className='mr-[20px] text-[20px]' />
             {walletAddress}
           </span>
           <span className='mr-[60px] flex items-center'>
-            <img src={token_voltio_png} className='w-[40px] mt-[2px]' />
+            <img src={token_voltio_png} className='w-[28px] mt-[2px] mr-[10px]' />
             {tokenAmount}
           </span>
           <button className='text-[40px]' onClick={toggleSideNav}>
