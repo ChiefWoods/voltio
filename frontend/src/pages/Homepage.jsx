@@ -1,33 +1,51 @@
-import React from 'react'
-import { whitelogo,solanalogo,foambg,foam } from '../assets'
+import {React, useState} from 'react'
+import { voltio_logo_png,solanalogo,foambg,foam2 } from '../assets'
 import { IoWallet } from "react-icons/io5";
 import { FaArrowAltCircleRight } from "react-icons/fa";
+import { ConnectWallet } from '../components';
 
 const Homepage = () => {
+
+  const[showConnectWallet,setConnectWallet]=useState(false);
+
+  const handleConnectWallet=()=>{
+    setConnectWallet(true);
+  }
+
+  const closeConnectWallet=()=>{
+    setConnectWallet(false);
+  }
+
   return (
-    <div className="flex flex-col items-center  bg-cover bg-center "style={{backgroundImage:`url(${foam})`}}>
-      <div className=" md:w-[500px] w-[300px]">
-        <div className='items-center flex flex-col'>
-          <div className='mb-[px] mt-[50px]'>
-            <img src={whitelogo} className="md:w-[300px] w-[200px] mt-[50px] mb-[50px] " />
+    <div className="flex flex-col items-center  bg-cover bg-center min-h-screen justify-center "style={{backgroundImage:`url(${foam2})`}}>
+      <div className=" md:w-[500px] w-[300px] flex items-center">
+        <div className='items-center flex flex-col '>
+          <div className=''>
+            <img src={voltio_logo_png} className="md:w-[500px] w-[400px]  " />
           </div>
           {/* <div>
             <p className="text-white font-bold text-[50px]">Sol-LaH</p>
           </div> */}
-          <div className="bg-white rounded-3xl shadow-2xl p-4 mt-4 items-center flex flex-col w-[90%]">
-            <p className="md:text-[28px] text-[20px] font-semibold text-[#3A6073] text-center">You'll need a wallet on <br/> Solana to continue</p>
-            <div className='mb-8 mt-6'>
+          <div className="bg-dg rounded-3xl shadow-2xl py-12 mt-4 items-center flex flex-col w-[90%]">
+            <div className='mb-10 mt-6'>
               {/* <img src={solanalogo}  className="md:h-[100px] h-[80px] "/> */}
-              <div className='md:h-[100px] h-[80px] md:w-[100px] w-[80px] border-4 border-[#3A6073] rounded-full p-4 items-center flex place-content-center'>
-                <IoWallet className=" text-[50px]"/>
+              <div className='md:h-[100px] h-[80px] md:w-[100px] w-[80px] border-4 border-white rounded-full p-4 items-center flex place-content-center'>
+                <IoWallet className=" text-[50px] text-white"/>
               </div>
             </div>
             <div className='mb-4'>
-            <button className="flex items-center text-[#3A6073] md:text-[20px] text-[18px] rounded-full  pl-4 pr-3 py-2 font-semibold border-4 border-[#3A6073] hover:border-[#00C000] hover:text-[#00C000]  group gradient-ring-button">Connect to a wallet <FaArrowAltCircleRight className='ml-2 text-[#3A6073] group-hover:text-[#00C000]' /></button>
+            <button className="transition ease-in-out  hover:-translate-y-1 hover:scale-110 hover:bg-[#00C000] duration-300 flex items-center text-white md:text-[20px] text-[18px] rounded-full  pl-4 pr-3 py-2 font-semibold border-4 border-white hover:border-[#00C000] hover:text-white  group" 
+            onClick={handleConnectWallet}>
+              Connect to a wallet <FaArrowAltCircleRight className='ml-2 text-white group-hover:text-white' />
+            </button>
             </div>
           </div>
         </div>
       </div>
+      {showConnectWallet &&(
+        <ConnectWallet
+        onClose={closeConnectWallet}/>
+      )}
     </div>
   )
 }

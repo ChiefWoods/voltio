@@ -38,6 +38,10 @@ h1 {
   line-height: 1.1;
 }
 
+p{
+  color:white
+}
+
 /* styles.css */
 .gradient-ring-button {
   position: relative;
@@ -60,6 +64,10 @@ h1 {
 
 .gradient-ring-button:hover::before {
   opacity: 1;
+}
+
+.bg-dg{
+  background-color: #252525;
 }
 
 
