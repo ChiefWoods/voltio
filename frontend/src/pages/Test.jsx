@@ -1,15 +1,14 @@
 import React from 'react';
 import {
   BackgroundImage,
-  TopNav,
+  TopBar,
 } from '../components';
 
 const Test = () => {
   return (
-    <div>
-      <BackgroundImage />
-      <TopNav />
-    </div>
+    <BackgroundImage>
+      <TopBar />
+    </BackgroundImage>
   );
 }
 
