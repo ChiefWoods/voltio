@@ -4,7 +4,8 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import{ BrowserRouter,Routes,Route, } from 'react-router-dom'
 import {
-  Homepage
+  Homepage,
+  IndiProject
 } from'./pages'
 
 
@@ -14,7 +15,7 @@ const App=()=>{
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Homepage/>}/>
-
+        <Route path="/individualproject" element={<IndiProject/>}/>
       </Routes>
     </BrowserRouter>
     </>

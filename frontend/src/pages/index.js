@@ -1,3 +1,6 @@
 import Homepage from "./Homepage";
-
-export {Homepage}
+import IndiProject from "./indi_project";
+export {
+    Homepage,
+    IndiProject
+}

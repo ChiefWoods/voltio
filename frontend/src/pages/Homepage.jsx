@@ -2,7 +2,7 @@ import {React, useState} from 'react'
 import { voltio_logo_white_png,solanalogo,foambg,foam2 } from '../assets'
 import { IoWallet } from "react-icons/io5";
 import { FaArrowAltCircleRight } from "react-icons/fa";
-import { ConnectWallet } from '../components';
+import { ConnectWallet,BackgroundImage } from '../components';
 
 const Homepage = () => {
 
@@ -17,7 +17,8 @@ const Homepage = () => {
   }
 
   return (
-    <div className="flex flex-col items-center  bg-cover bg-center min-h-screen justify-center "style={{backgroundImage:`url(${foam2})`}}>
+    <BackgroundImage>
+
       <div className=" md:w-[500px] w-[300px] flex items-center">
         <div className='items-center flex flex-col '>
           <div className=''>
@@ -46,7 +47,8 @@ const Homepage = () => {
         <ConnectWallet
         onClose={closeConnectWallet}/>
       )}
-    </div>
+    </BackgroundImage>
+    
   )
 }
 
