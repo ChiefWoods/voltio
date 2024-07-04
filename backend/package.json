@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/index.js",
     "getMint": "node src/get-mint.js",
     "mintTo": "node src/mint-token.js",
     "upload": "node src/upload-asset.js",
@@ -22,6 +23,7 @@
     "@metaplex-foundation/mpl-token-metadata": "^2.13.0",
     "@solana-developers/helpers": "^2.3.0",
     "@solana/spl-token": "^0.4.6",
-    "@solana/web3.js": "^1.94.0"
+    "@solana/web3.js": "^1.94.0",
+    "express": "^4.19.2"
   }
 }
