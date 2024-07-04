@@ -18,7 +18,7 @@ const sampleData = {
 
 const StatsBox = () => {
   return (
-    <div className="grid grid-cols-2 gap-[40px] py-[40px] px-[60px] rounded-lg bg-[#252525] mt-[40px]">
+    <div className="grid grid-cols-2 gap-[40px] py-[40px] px-[60px] rounded-lg bg-[#252525] mt-[60px]">
       <div className="p-4 rounded-lg bg-[#434343]">
         <h2 className="text-lg font-semibold text-white">Total Amount Invested</h2>
         <p>$10,000</p>

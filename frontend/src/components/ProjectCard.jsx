@@ -16,7 +16,7 @@ const ProjectCard = ({
   };
 
   return (
-    <div className="max-w-[300px] rounded-[30px] overflow-hidden shadow-lg bg-[#434343] py-[24px] px-[32px]">
+    <div className="max-w-[250px] rounded-[30px] overflow-hidden shadow-lg bg-[#434343] py-[24px] px-[32px]">
       <img className="w-full rounded-md" src={projectImage} alt="Project" />
       <div className="px-1 py-4">
         <div className="font-bold text-xl mb-2 text-white font-medium">{projectName}</div>
