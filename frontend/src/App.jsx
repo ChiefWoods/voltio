@@ -9,7 +9,8 @@ import {
   Profile,
   Test,
   Dashboard,
-  AllProjects
+  AllProjects,
+  Marketplace,
 } from'./pages'
 
 
@@ -24,6 +25,7 @@ const App=()=>{
         <Route path="/profile" element={<Profile/>}/>
         <Route path="/test" element={<Test/>}/>
         <Route path="/allprojects" element={<AllProjects/>}/>
+        <Route path="/marketplace" element={<Marketplace/>}/>
       </Routes>
     </BrowserRouter>
     </>

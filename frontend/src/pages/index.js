@@ -4,6 +4,7 @@ import Profile from "./Profile"
 import Test from "./Test";
 import Dashboard from "./Dashboard";
 import AllProjects from "./AllProjects";
+import Marketplace from "./Marketplace";
 
 export {
   Homepage,
@@ -12,4 +13,5 @@ export {
   Test,
   Dashboard,
   AllProjects,
+  Marketplace,
 }
