@@ -10,7 +10,8 @@
     "upload": "node src/upload-asset.js",
     "setTokenMetadata": "node src/set-token-metadata.js",
     "createCollection": "node src/create-collection.js",
-    "mintNft": "node src/mint-nft.js"
+    "mintNft": "node src/mint-nft.js",
+    "transferTokens": "node src/transfer-tokens.js"
   },
   "keywords": [],
   "author": "",
