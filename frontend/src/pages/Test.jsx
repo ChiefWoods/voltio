@@ -10,7 +10,7 @@ const Test = () => {
     <>
       <BackgroundImage>
         {/* <ProjectCard /> */}
-        <BuyFraction isOpen={true} />
+        {/* <BuyFraction isOpen={true} /> */}
       </BackgroundImage>
     </>
   );
