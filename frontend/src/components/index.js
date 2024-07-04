@@ -5,6 +5,7 @@ import SideNav from "./SideNav";
 import StatsBox from "./StatsBox";
 import DashboardLatest from "./DashboardLatest";
 import ProjectCard from "./ProjectCard";
+import BuyFraction from "./BuyFraction";
 
 export{
     ConnectWallet,
@@ -14,4 +15,5 @@ export{
     StatsBox,
     DashboardLatest,
     ProjectCard,
+    BuyFraction,
 }

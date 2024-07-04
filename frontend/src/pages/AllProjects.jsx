@@ -18,36 +18,42 @@ const AllProjects = () => {
       projectLocation: "Pahang, Malaysia",
       roi: "30",
       projectImage: solar_panel1,
+      route: "/individualproject"
     },
     {
       projectName: "Project B",
       projectLocation: "Kedah, Malaysia",
       roi: "25",
       projectImage: project_c,
+      route: "/allprojects"
     },
     {
       projectName: "Project C",
       projectLocation: "Johor, Malaysia",
       roi: "35",
       projectImage: project_d,
+      route: "/allprojects"
     },
     {
       projectName: "Project D",
       projectLocation: "Selangor, Malaysia",
       roi: "40",
       projectImage: project_c,
+      route: "/allprojects"
     },
     {
       projectName: "Project E",
       projectLocation: "Selangor, Malaysia",
       roi: "28",
       projectImage: project_d,
+      route: "/allprojects"
     },
     {
       projectName: "Project F",
       projectLocation: "Selangor, Malaysia",
       roi: "32",
       projectImage: project_e,
+      route: "/allprojects"
     },
   ];
 
@@ -66,6 +72,7 @@ const AllProjects = () => {
               projectLocation={project.projectLocation}
               roi={project.roi}
               projectImage={project.projectImage}
+              route={project.route}
             />
           ))}
         </div>

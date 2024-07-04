@@ -14,18 +14,21 @@ const DashboardLatest = () => {
       projectLocation: "Pahang, Malaysia",
       roi: "30",
       projectImage: solar_panel1,
+      route: "/individualproject"
     },
     {
       projectName: "Project B",
       projectLocation: "Kedah, Malaysia",
       roi: "25",
       projectImage: project_c,
+      route: "/dashboard"
     },
     {
       projectName: "Project C",
       projectLocation: "Johor, Malaysia",
       roi: "35",
       projectImage: project_d,
+      route: "/dashboard"
     },
   ];
 
@@ -40,6 +43,7 @@ const DashboardLatest = () => {
             projectLocation={project.projectLocation}
             roi={project.roi}
             projectImage={project.projectImage}
+            route={project.route}
           />
         ))}
       </div>

@@ -2,13 +2,15 @@ import React from 'react';
 import {
   BackgroundImage,
   ProjectCard,
+  BuyFraction,
 } from '../components';
 
 const Test = () => {
   return (
     <>
       <BackgroundImage>
-        <ProjectCard />
+        {/* <ProjectCard /> */}
+        <BuyFraction isOpen={true} />
       </BackgroundImage>
     </>
   );
