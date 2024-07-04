@@ -1,14 +1,16 @@
 import React from 'react';
 import {
   BackgroundImage,
-  TopBar,
+  ProjectCard,
 } from '../components';
 
 const Test = () => {
   return (
-    <BackgroundImage>
-      <TopBar />
-    </BackgroundImage>
+    <>
+      <BackgroundImage>
+        <ProjectCard />
+      </BackgroundImage>
+    </>
   );
 }
 

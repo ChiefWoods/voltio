@@ -3,6 +3,8 @@ import BackgroundImage from "./BackgroundImage";
 import TopBar from "./TopBar";
 import SideNav from "./SideNav";
 import StatsBox from "./StatsBox";
+import DashboardLatest from "./DashboardLatest";
+import ProjectCard from "./ProjectCard";
 
 export{
     ConnectWallet,
@@ -10,4 +12,6 @@ export{
     TopBar,
     SideNav,
     StatsBox,
+    DashboardLatest,
+    ProjectCard,
 }

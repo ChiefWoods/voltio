@@ -3,6 +3,7 @@ import {
   BackgroundImage,
   TopBar,
   StatsBox,
+  DashboardLatest,
 } from '../components';
 
 const Dashboard = () => {
@@ -10,6 +11,7 @@ const Dashboard = () => {
     <BackgroundImage>
       <TopBar currentPage='dashboard' />
       <StatsBox />
+      <DashboardLatest />
     </BackgroundImage>
   )
 }
