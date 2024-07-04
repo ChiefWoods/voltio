@@ -3,6 +3,7 @@ import IndiProject from "./indi_project";
 import Profile from "./Profile"
 import Test from "./Test";
 import Dashboard from "./Dashboard";
+import AllProjects from "./AllProjects";
 
 export {
   Homepage,
@@ -10,4 +11,5 @@ export {
   Profile,
   Test,
   Dashboard,
+  AllProjects,
 }

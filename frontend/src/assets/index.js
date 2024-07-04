@@ -14,7 +14,9 @@ import phantom from './phantom.png'
 import metamask from './metamask.png'
 import solar_panel1 from './solar_panel1.png'
 import profile from './profile.jpg'
-
+import project_c from './project-c.jpg'
+import project_d from './project-d.jpg'
+import project_e from './project-e.jpg'
 
 export {
   token_voltio_png,
@@ -32,5 +34,8 @@ export {
   metamask,
   voltio_logo_white_png,
   solar_panel1,
-  profile
+  profile,
+  project_c,
+  project_d,
+  project_e,
 }

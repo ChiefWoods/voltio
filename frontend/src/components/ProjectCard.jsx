@@ -17,7 +17,11 @@ const ProjectCard = ({
 
   return (
     <div className="max-w-[250px] rounded-[30px] overflow-hidden shadow-lg bg-[#434343] py-[24px] px-[32px]">
-      <img className="w-full rounded-md" src={projectImage} alt="Project" />
+      <img
+        className="w-[210px] h-[100px] object-cover rounded-lg"
+        src={projectImage}
+        alt="Project"
+      />
       <div className="px-1 py-4">
         <div className="font-bold text-xl mb-2 text-white font-medium">{projectName}</div>
         <p className="text-base font-thin flex"><FaLocationDot className="mr-[10px] mt-[6px] text-[#a1e5a1]" /> {projectLocation}</p>
