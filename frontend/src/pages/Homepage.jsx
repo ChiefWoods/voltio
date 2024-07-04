@@ -1,5 +1,5 @@
 import {React, useState} from 'react'
-import { voltio_logo_png,solanalogo,foambg,foam2 } from '../assets'
+import { voltio_logo_white_png,solanalogo,foambg,foam2 } from '../assets'
 import { IoWallet } from "react-icons/io5";
 import { FaArrowAltCircleRight } from "react-icons/fa";
 import { ConnectWallet } from '../components';
@@ -21,7 +21,7 @@ const Homepage = () => {
       <div className=" md:w-[500px] w-[300px] flex items-center">
         <div className='items-center flex flex-col '>
           <div className=''>
-            <img src={voltio_logo_png} className="md:w-[500px] w-[400px]  " />
+            <img src={voltio_logo_white_png} className="md:w-[500px] w-[400px] fill-white " />
           </div>
           {/* <div>
             <p className="text-white font-bold text-[50px]">Sol-LaH</p>
