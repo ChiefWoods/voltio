@@ -12,7 +12,7 @@ const SideNav = ({ onClose }) => {
       <nav className="flex flex-col space-y-[22px] text-[18px] pl-[50px] mt-[40px] text-transform: uppercase">
         <a href="/profile" className="text-white font-thin hover:scale-105 hover:text-white">Profile</a>
         <a href="/dashboard" className="text-white font-thin hover:scale-105 hover:text-white">Dashboard</a>
-        <a href="" className="text-white font-thin hover:scale-105 hover:text-white">Projects</a>
+        <a href="/allprojects" className="text-white font-thin hover:scale-105 hover:text-white">Projects</a>
         <a href="" className="text-white font-thin hover:scale-105 hover:text-white">Marketplace</a>
         <a href="" className="text-white font-thin hover:scale-105 hover:text-white">Sell your energy</a>
       </nav>
