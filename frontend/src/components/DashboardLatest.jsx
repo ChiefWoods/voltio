@@ -1,49 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ProjectCard from '../components/ProjectCard';
 import { TbPlayerTrackNextFilled } from "react-icons/tb";
-import {
-  solar_panel1,
-  project_c,
-  project_d,
-} from "../assets";
 
 const DashboardLatest = () => {
-  const projects = [
-    {
-      projectName: "Project A",
-      projectLocation: "Pahang, Malaysia",
-      roi: "30",
-      projectImage: solar_panel1,
-      route: "/individualproject"
-    },
-    {
-      projectName: "Project B",
-      projectLocation: "Kedah, Malaysia",
-      roi: "25",
-      projectImage: project_c,
-      route: "/dashboard"
-    },
-    {
-      projectName: "Project C",
-      projectLocation: "Johor, Malaysia",
-      roi: "35",
-      projectImage: project_d,
-      route: "/dashboard"
-    },
-  ];
+  const [latestProjects, setLatestProjects] = useState([]);
+
+  useEffect(() => {
+		async function fetchData() {
+			try {
+				const data = await fetch(
+					`${import.meta.env.VITE_BACKEND_URL}/nft/collection`
+				).then((res) => res.json());
+
+				setLatestProjects(data);
+			} catch (err) {
+				console.log(err);
+			}
+		}
+
+		fetchData();
+	}, []);
 
   return (
     <div className="max-w-[824px] mx-auto px-4 sm:px-6 lg:px-8 pt-[20px] pb-[20px] bg-[#252525] mt-[60px] rounded-[10px] mb-[200px]">
-      <h2 className="text-[30px] font-semibold mb-[34px] text-[#a1e5a1]">Invest in our latest project</h2>
+      <h2 className="text-[30px] font-semibold mb-[34px] text-[#a1e5a1]">Invest in our latest projects</h2>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-[30px]">
-        {projects.map((project, index) => (
+        {latestProjects.map((project) => (
           <ProjectCard
-            key={index}
-            projectName={project.projectName}
-            projectLocation={project.projectLocation}
-            roi={project.roi}
-            projectImage={project.projectImage}
-            route={project.route}
+            key={project.address}
+            name={project.name}
+            image={project.json.image}
+            location={project.json.location}
+            output={project.json.output}
+            route="/dashboard"
           />
         ))}
       </div>

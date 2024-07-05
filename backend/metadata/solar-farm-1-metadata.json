@@ -1,6 +1,12 @@
 {
   "name": "Solar Farm 1",
   "image": "https://devnet.irys.xyz/rU5VwfEf1tdeLuLw4iuGE_EuSCWZ_CIrL_LS4HKL7tc",
+  "description": "Nestled in the lush Titiwangsa Mountains, this solar farm harnesses the abundant sunshine of Pahang's highlands.",
   "location": "Pahang, Malaysia",
-  "output": "28 MW"
+  "output": "28 MW/h",
+  "yearBuilt": 2019,
+  "APY": 18.5,
+  "activeCapacity": 145,
+  "pipelineCapacity": 160,
+  "developedBy": "GreenPeak Solutions Sdn Bhd"
 }
