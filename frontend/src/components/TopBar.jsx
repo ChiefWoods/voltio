@@ -32,6 +32,8 @@ const TopBar = ({ currentPage = "CURRENT PAGE" }) => {
 
 		if (publicKey) {
 			fetchData();
+		} else {
+			setTokenAmount(0);
 		}
 	}, [publicKey]);
 
@@ -57,7 +59,7 @@ const TopBar = ({ currentPage = "CURRENT PAGE" }) => {
 							src={token_voltio_png}
 							className="w-[28px] mt-[2px] mr-[10px]"
 						/>
-						{tokenAmount || ""}
+						{tokenAmount}
 					</span>
 					<button className="text-[40px]" onClick={toggleSideNav}>
 						<MdTableRows />
