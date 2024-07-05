@@ -8,11 +8,10 @@ import '@solana/wallet-adapter-react-ui/styles.css';
 
 import {
   Home,
-  IndiProject,
   Profile,
   Test,
   Dashboard,
-  AllProjects,
+  Projects,
   Marketplace,
   Energy,
 } from './pages';
@@ -33,8 +32,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="individualproject/:mintAddress" element={<IndiProject />} />
-            <Route path="/allprojects" element={<AllProjects/>}/>
+            <Route path="projects/:mintAddress?" element={<Projects />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/marketplace" element={<Marketplace />} />
             <Route path="/listenergy" element={<Energy/>}/>

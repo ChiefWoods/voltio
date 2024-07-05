@@ -13,7 +13,7 @@ const SideNav = ({ onClose }) => {
 		},
 		{
 			name: "Projects",
-			href: "/allprojects",
+			href: "/projects",
 		},
 		{
 			name: "Marketplace",
