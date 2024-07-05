@@ -5,6 +5,7 @@ import Dashboard from "./Dashboard";
 import Projects from "./Projects";
 import Marketplace from "./Marketplace";
 import Energy from "./Energy";
+import Faucet from "./Faucet";
 
 export {
   Home,
@@ -14,4 +15,5 @@ export {
   Projects,
   Marketplace,
   Energy,
+  Faucet
 }

@@ -14,6 +14,7 @@ import {
   Projects,
   Marketplace,
   Energy,
+  Faucet
 } from './pages';
 
 const App = () => {
@@ -37,6 +38,7 @@ const App = () => {
             <Route path="/marketplace" element={<Marketplace />} />
             <Route path="/energy" element={<Energy/>}/>
             <Route path="/test" element={<Test />} />
+			      <Route path="/faucet" element={<Faucet/>} />
           </Routes>
         </WalletProvider>
       </ConnectionProvider>
