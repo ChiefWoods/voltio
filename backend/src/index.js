@@ -6,7 +6,7 @@ import { getNftCollection } from "./get-nft-collection.js";
 import { getTokens } from "./get-tokens.js";
 import { transferTokens } from "./transfer-tokens.js";
 import { transferNft } from "./transfer-nft.js";
-import { ATOMIC_UNITS_PER_TOKEN } from "./get-mint.js";
+import { mintTokens } from "./mint-token.js";
 
 const app = express();
 app.use(express.json());
@@ -64,7 +64,7 @@ transferRouter
 
       await transferTokens(senderSecretKey, recipientAddress, amount);
 
-      res.status(200).json({ message: `${amount / ATOMIC_UNITS_PER_TOKEN} tokens transferred to ${recipientAddress} successfully.` });
+      res.status(200).json({ message: `${amount} tokens transferred to ${recipientAddress} successfully.` });
     } catch (err) {
       console.log(err);
       res.status(500).json({ error: "Failed to transfer tokens." });
@@ -95,6 +95,20 @@ app.get("/tokens/:ownerAddress", async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: "Failed to retrieve tokens." });
+  }
+});
+
+// Airdrop tokens
+app.post("/airdrop", async (req, res) => {
+  try {
+    const { recipientAddress, amount } = req.body;
+
+    await mintTokens(recipientAddress, amount);
+
+    res.status(200).json({ message: `${amount} tokens airdropped to ${recipientAddress} successfully.` });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: "Failed to airdrop tokens." });
   }
 });
 

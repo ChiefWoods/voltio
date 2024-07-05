@@ -5,7 +5,7 @@ Now live on Devnet!
 Frontend - https://voltio.vercel.app/  
 Backend - https://voltio-backend.onrender.com
 
-### Prerequisites
+## Prerequisites
 
 1. Set connection to localhost
 
@@ -15,7 +15,7 @@ solana config set -u localhost
 
 2. Rename all `sample.env` files to `.env`.
 
-### Setup
+## Setup
 
 1. Install all packages in both `backend` and `frontend`
 
@@ -60,13 +60,7 @@ VOLTIO_MINT=<MINT_ADDRESS_HERE>
 npm run setTokenMetadata
 ```
 
-7. Mint Voltio tokens to main wallet
-
-```
-npm run mintTo $(solana address -k ../voltio-wallet.json) 5
-```
-
-8. Create NFT collection, then add collection address to `backend/.env` from the Solana Explorer link
+7. Create NFT collection, then add collection address to `backend/.env` from the Solana Explorer link
 
 ```
 npm run createCollection metadata/voltio-collection-metadata.json
@@ -76,27 +70,29 @@ npm run createCollection metadata/voltio-collection-metadata.json
 VOLTIO_COLLECTION_SOLAR=<COLLECTION_ADDRESS_HERE>
 ```
 
-9. Mint sample NFTs to main wallet
+8. Mint sample NFTs to main wallet
 
 ```
 for i in {1..5}; do npm run mintNft metadata/solar-farm-$i-metadata.json; done
 ```
 
-10. In `backend`, start Express server
+9. In `backend`, start Express server
 
 ```
 npm run start
 ```
 
-11. Open a new terminal in `frontend` and start development server
+10. Open a new terminal in `frontend` and start development server
 
 ```
 npm run dev
 ```
 
-## Transferring Tokens
+## HTTP Routes
 
-Make a POST HTTP request to `http://localhost:8000/transfer/tokens` with the following body:
+### Transferring Tokens
+
+Make a POST HTTP request to `/transfer/tokens` with the following body:
 
 ```
 {
@@ -106,14 +102,25 @@ Make a POST HTTP request to `http://localhost:8000/transfer/tokens` with the fol
 }
 ```
 
-## Transferring NFTs
+### Transferring NFTs
 
-Make a POST HTTP request to `http://localhost:8000/transfer/nft` with the following body:
+Make a POST HTTP request to `/transfer/nft` with the following body:
 
 ```
 {
   "senderSecretKey": <SECRET_KEY_IN_UINT8ARRAY>,
   "recipientAddress": <ADDRESS_TO_TRANSFER_TO>,
   "mintAddress": <MINT_ADDRESS_OF_NFT>
+}
+```
+
+### Airdrop Tokens
+
+Make a POST HTTP request to `/airdrop` with the following body:
+
+```
+{
+  "recipientAddress": <ADDRESS_TO_AIRDROP_TO>,
+  "amount": <AMOUNT_OF_TOKENS>
 }
 ```
