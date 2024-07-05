@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { BackgroundImage, TopBar, BuyFraction } from "../components";
 import {
 	FaChevronCircleLeft,
@@ -8,6 +9,8 @@ import {
 import { IoLocationSharp } from "react-icons/io5";
 
 const indi_project = () => {
+	const { mintAddress } = useParams();
+	const navigate = useNavigate();
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [projects, setProjects] = useState([]);
 	const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
@@ -22,19 +25,35 @@ const indi_project = () => {
 	};
 
 	function previousProject() {
+		let newIndex;
+
 		if (currentProjectIndex > 0) {
-			setCurrentProjectIndex(currentProjectIndex - 1);
+			newIndex = currentProjectIndex - 1;
 		} else {
-			setCurrentProjectIndex(projects.length - 1);
+			newIndex = projects.length - 1;
 		}
+
+		setCurrentProjectIndex(newIndex);
+
+		navigate(`/individualproject/${projects[newIndex].address}`, {
+			replace: true,
+		});
 	}
 
 	function nextProject() {
+		let newIndex;
+
 		if (currentProjectIndex < projects.length - 1) {
-			setCurrentProjectIndex(currentProjectIndex + 1);
+			newIndex = currentProjectIndex + 1;
 		} else {
-			setCurrentProjectIndex(0);
+			newIndex = 0;
 		}
+
+		setCurrentProjectIndex(newIndex);
+
+		navigate(`/individualproject/${projects[newIndex].address}`, {
+			replace: true,
+		});
 	}
 
 	useEffect(() => {
@@ -45,7 +64,9 @@ const indi_project = () => {
 				).then((res) => res.json());
 
 				setProjects(data);
-				setCurrentProject(data[0]);
+				setCurrentProject(
+					data.find((project) => project.address === mintAddress)
+				);
 			} catch (err) {
 				console.log(err);
 			}

@@ -32,7 +32,7 @@ const DashboardLatest = () => {
             image={project.json.image}
             location={project.json.location}
             output={project.json.output + " MW/h"}
-            route="/dashboard"
+            route={`/individualproject/${project.address}`}
           />
         ))}
       </div>

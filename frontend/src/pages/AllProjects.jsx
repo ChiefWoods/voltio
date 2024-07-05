@@ -35,7 +35,7 @@ const AllProjects = () => {
 							image={project.json.image}
 							location={project.json.location}
 							output={project.json.output}
-							route={"/allprojects"}
+							route={`/individualproject/${project.address}`}
 						/>
 					))}
 				</div>
