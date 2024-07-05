@@ -1,5 +1,7 @@
 # Voltio
 
+Now live on Devnet!
+
 Frontend - https://voltio.vercel.app/  
 Backend - https://voltio-backend.onrender.com
 
@@ -19,9 +21,9 @@ solana-test-validator --bpf-program metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s 
 
 ```
 solana-keygen new -o voltio-wallet.json
-solana airdrop 10 $(solana address -k ../voltio-wallet.json)
+solana airdrop 10 $(solana address -k voltio-wallet.json)
 solana-keygen new -o voltio-test-1.json
-solana airdrop 10 $(solana address -k ../voltio-test-1.json)
+solana airdrop 10 $(solana address -k voltio-test-1.json)
 ```
 
 3. Add main wallet secret key to `backend/.env`
