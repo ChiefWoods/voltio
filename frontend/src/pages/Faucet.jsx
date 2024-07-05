@@ -16,7 +16,7 @@ const Faucet = () => {
 		{
 			!publicKey
 				?
-					<h1>Connect to a wallet or risk ▇▇▇▇</h1>
+					<h1>Connect to a wallet pls :&#40;</h1>
 				:
 					<div className="bg-[#1e1e1e] p-10 rounded-[50px] mt-10">
 						<form>
