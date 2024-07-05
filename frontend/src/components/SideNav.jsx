@@ -15,6 +15,7 @@ const SideNav = ({ onClose }) => {
         <a href="/allprojects" className="text-white font-thin hover:scale-105 hover:text-white">Projects</a>
         <a href="/marketplace" className="text-white font-thin hover:scale-105 hover:text-white">Marketplace</a>
         <a href="/listenergy" className="text-white font-thin hover:scale-105 hover:text-white">Sell your energy</a>
+        <a href="/exchange" className="text-white font-thin hover:scale-105 hover:text-white">Exchange</a>
       </nav>
     </div>
   );

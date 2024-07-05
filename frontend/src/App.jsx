@@ -15,6 +15,7 @@ import {
   AllProjects,
   Marketplace,
   ListEnergy,
+  Exchange
 } from './pages';
 
 const App = () => {
@@ -39,6 +40,7 @@ const App = () => {
             <Route path="/marketplace" element={<Marketplace />} />
             <Route path="/allprojects" element={<AllProjects/>}/>
             <Route path="/listenergy" element={<ListEnergy/>}/>
+            <Route path='/exchange' element={<Exchange/>}/>
           </Routes>
         </WalletProvider>
       </ConnectionProvider>

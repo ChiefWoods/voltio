@@ -104,6 +104,7 @@ const Profile = () => {
 														</td>
 													</tr>
 												))}
+												
 											</tbody>
 										</table>
 									</div>

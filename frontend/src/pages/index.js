@@ -6,6 +6,7 @@ import Dashboard from "./Dashboard";
 import AllProjects from "./AllProjects";
 import Marketplace from "./Marketplace";
 import ListEnergy from "./ListEnergy";
+import Exchange from "./Exchange";
 
 export {
   Homepage,
@@ -16,4 +17,5 @@ export {
   AllProjects,
   Marketplace,
   ListEnergy,
+  Exchange
 }

@@ -6,6 +6,7 @@ import StatsBox from "./StatsBox";
 import DashboardLatest from "./DashboardLatest";
 import ProjectCard from "./ProjectCard";
 import BuyFraction from "./BuyFraction";
+import IntegratedTerminal from "./IntegratedTerminal";
 
 export{
     ConnectWallet,
@@ -16,4 +17,5 @@ export{
     DashboardLatest,
     ProjectCard,
     BuyFraction,
+    IntegratedTerminal
 }
