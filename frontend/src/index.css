@@ -70,6 +70,18 @@ p{
   background-color: #252525;
 }
 
+.custom-wallet-button{
+  background-color: #f56565 !important; /* Tailwind's bg-red-500 */
+  color: #ffffff !important; /* Tailwind's text-white */
+  padding: 0.5rem 1rem !important; /* Tailwind's px-4 py-2 */
+  border-radius: 0.375rem !important; /* Tailwind's rounded-md */
+  transition: all 0.2s ease-in-out;
+}
+
+.custom-wallet-button:hover {
+  background-color: #e53e3e !important; /* Tailwind's hover:bg-red-600 */
+}
+
 .list_mode_label {
   width: 73px;
   height: 40px;
