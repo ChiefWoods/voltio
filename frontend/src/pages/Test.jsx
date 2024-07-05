@@ -9,7 +9,7 @@ const Test = () => {
   return (
     <>
       <BackgroundImage>
-        {/* <ProjectCard /> */}
+        <ProjectCard name='Project A' location='Subang Jaya, Selangor' output='420' />
         {/* <BuyFraction isOpen={true} /> */}
       </BackgroundImage>
     </>
