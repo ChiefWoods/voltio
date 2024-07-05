@@ -3,13 +3,9 @@ import fs from "fs";
 import metaplex from "./metaplex.js"
 
 export async function createCollection(metadata) {
-  const { name, description, image } = JSON.parse(fs.readFileSync(metadata, "utf8"));
+  const file = JSON.parse(fs.readFileSync(metadata, "utf8"));
 
-  const { uri } = await metaplex.nfts().uploadMetadata({
-    name,
-    description,
-    image
-  })
+  const { uri } = await metaplex.nfts().uploadMetadata(file)
 
   console.log(`Metadata uploaded: ${uri}`);
 

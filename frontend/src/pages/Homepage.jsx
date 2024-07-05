@@ -5,7 +5,6 @@ import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
 import { PhantomWalletAdapter, SolflareWalletAdapter } from '@solana/wallet-adapter-wallets';
 import {
   WalletModalProvider,
-  WalletDisconnectButton,
   WalletMultiButton
 } from '@solana/wallet-adapter-react-ui';
 import { clusterApiUrl } from '@solana/web3.js';
@@ -15,8 +14,7 @@ import {
   voltio_logo_white_png,
 } from '../assets';
 import { IoWallet } from 'react-icons/io5';
-import { FaArrowAltCircleRight } from 'react-icons/fa';
-import { ConnectWallet, BackgroundImage } from '../components';
+import { BackgroundImage } from '../components';
 
 const Homepage = () => {
   const navigate = useNavigate();
@@ -38,7 +36,7 @@ const Homepage = () => {
     if (publicKey) {
       console.log(publicKey)
       console.log(connection)
-      // navigate('/dashboard');
+      navigate('/dashboard');
       // window.location.reload();
       // Redirect to dashboard upon successful connection
       
@@ -46,7 +44,6 @@ const Homepage = () => {
   }, [publicKey, connection]);
 
   return (
-  
         <WalletModalProvider>
           <BackgroundImage>
             <div className=" md:w-[500px] w-[300px] flex items-center">
@@ -64,16 +61,12 @@ const Homepage = () => {
                     <div className="text-center hover:scale-110 mb-4">
                       <WalletMultiButton className="custom-wallet-button" />
                     </div>
-                    <div className="text-center ">
-                      <WalletDisconnectButton className="custom-wallet-button" />
-                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </BackgroundImage>
         </WalletModalProvider>
-      
   );
 };
 
