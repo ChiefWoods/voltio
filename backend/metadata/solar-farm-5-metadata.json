@@ -3,9 +3,9 @@
   "image": "https://devnet.irys.xyz/b8lXakiLdiHvaE9o3AOGGSlsPwMuHKhPqS34TxatL0c",
   "description": "Perched on the slopes of Mount Kinabalu, this innovative solar farm captures Sabah's equatorial sunlight while preserving the surrounding rainforest.",
   "location": "Sabah, Malaysia",
-  "output": "140 MW/h",
+  "output": 140,
   "yearBuilt": 2022,
-  "APY": 17.8,
+  "annualYield": 17.8,
   "activeCapacity": 120,
   "pipelineCapacity": 135,
   "developedBy": "Borneo Sustainable Power Co."

@@ -31,7 +31,7 @@ const DashboardLatest = () => {
             name={project.name}
             image={project.json.image}
             location={project.json.location}
-            output={project.json.output}
+            output={project.json.output + " MW/h"}
             route="/dashboard"
           />
         ))}

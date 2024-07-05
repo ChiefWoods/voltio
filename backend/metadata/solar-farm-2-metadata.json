@@ -3,9 +3,9 @@
   "image": "https://devnet.irys.xyz/wIh_S2F0xutYkSiSJLQS_GxO9Y8LJYIPUg9MYX0g2kw",
   "description": "Spanning the picturesque paddy fields of Kedah, this solar installation blends seamlessly with the state's agricultural landscape.",
   "location": "Kedah, Malaysia",
-  "output": "60 MW/h",
+  "output": 60,
   "yearBuilt": 2021,
-  "APY": 19.2,
+  "annualYield": 19.2,
   "activeCapacity": 200,
   "pipelineCapacity": 220,
   "developedBy": "SolarFields Malaysia Berhad"
