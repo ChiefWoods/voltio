@@ -1,5 +1,8 @@
 # Voltio
 
+Frontend - https://voltio.vercel.app/  
+Backend - https://voltio-backend.onrender.com
+
 ## Setup
 
 ### Prerequisites
@@ -44,10 +47,10 @@ VOLTIO_MINT=<MINT_ADDRESS_HERE>
 npm run setTokenMetadata
 ```
 
-5. Mint 3.5 Voltio tokens to main wallet
+5. Mint Voltio tokens to main wallet
 
 ```
-npm run mintTo $(solana address) 3.5
+npm run mintTo $(solana address) 5
 ```
 
 6. Create NFT collection, then add collection address to `backend/.env`
