@@ -41,6 +41,8 @@ const Profile = () => {
 
 		if (publicKey) {
 			fetchData();
+		} else {
+			setTokenAmount(0);
 		}
 	}, [publicKey]);
 
@@ -52,11 +54,11 @@ const Profile = () => {
 					<img src={profile} className="w-[250px] rounded-full" />
 					<div className="ml-8 text-[40px]">
 						<p className="overflow-hidden overflow-ellipsis max-w-[15ch]">
-							{publicKey?.toBase58()}
+							{publicKey?.toBase58() || "No Wallet Connected"}
 						</p>
 						<div className="flex flex-row items-center">
 							<img src={token_voltio_png} className="w-[60px]" />
-							<p className="ml-2">{tokenAmount || ""}</p>
+							<p className="ml-2">{tokenAmount}</p>
 						</div>
 					</div>
 				</div>

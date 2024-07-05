@@ -4,7 +4,7 @@ import {
   TopBar,
 } from '../components';
 
-const ListEnergy = () => {
+const Energy = () => {
   const avgEnergy = 1234; // Replace with your actual avgEnergy constant
   const energyUnit = 'kWh'; // Replace with your actual energyUnit constant
 
@@ -87,4 +87,4 @@ const ListEnergy = () => {
   );
 };
 
-export default ListEnergy;
+export default Energy;

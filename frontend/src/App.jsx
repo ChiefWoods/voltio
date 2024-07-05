@@ -7,14 +7,13 @@ import { clusterApiUrl } from '@solana/web3.js';
 import '@solana/wallet-adapter-react-ui/styles.css';
 
 import {
-  Homepage,
-  IndiProject,
+  Home,
   Profile,
   Test,
   Dashboard,
-  AllProjects,
+  Projects,
   Marketplace,
-  ListEnergy,
+  Energy,
   Faucet
 } from './pages';
 
@@ -32,15 +31,14 @@ const App = () => {
       <ConnectionProvider endpoint={endpoint}>
         <WalletProvider wallets={wallets} autoConnect>
           <Routes>
-            <Route path="/" element={<Homepage />} />
+            <Route path="/" element={<Home />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="individualproject/:mintAddress" element={<IndiProject />} />
+            <Route path="projects/:mintAddress?" element={<Projects />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/test" element={<Test />} />
             <Route path="/marketplace" element={<Marketplace />} />
-            <Route path="/allprojects" element={<AllProjects/>}/>
-            <Route path="/listenergy" element={<ListEnergy/>}/>
-			<Route path="/faucet" element={<Faucet/>}/>
+            <Route path="/energy" element={<Energy/>}/>
+            <Route path="/test" element={<Test />} />
+			      <Route path="/faucet" element={<Faucet/>} />
           </Routes>
         </WalletProvider>
       </ConnectionProvider>
