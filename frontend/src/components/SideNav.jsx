@@ -21,7 +21,7 @@ const SideNav = ({ onClose }) => {
 		},
 		{
 			name: "Sell Your Energy",
-			href: "/listenergy",
+			href: "/energy",
 		},
 	];
 

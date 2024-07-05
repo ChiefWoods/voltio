@@ -35,7 +35,7 @@ const App = () => {
             <Route path="projects/:mintAddress?" element={<Projects />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/marketplace" element={<Marketplace />} />
-            <Route path="/listenergy" element={<Energy/>}/>
+            <Route path="/energy" element={<Energy/>}/>
             <Route path="/test" element={<Test />} />
           </Routes>
         </WalletProvider>
