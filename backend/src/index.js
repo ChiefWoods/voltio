@@ -1,4 +1,5 @@
 import express, { Router } from "express";
+import cors from "cors";
 import { getNftByMint } from "./get-nft-by-mint.js";
 import { getNftByOwner } from "./get-nft-by-owner.js";
 import { getNftCollection } from "./get-nft-collection.js";
@@ -8,6 +9,7 @@ import { ATOMIC_UNITS_PER_TOKEN } from "./get-mint.js";
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 const nftRouter = Router();
 const transferRouter = Router();
