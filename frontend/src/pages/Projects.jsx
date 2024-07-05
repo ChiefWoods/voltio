@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { BackgroundImage, TopBar, ProjectCard, BuyFraction } from "../components";
 import {
@@ -17,6 +17,8 @@ const Projects = () => {
 		const [isModalOpen, setIsModalOpen] = useState(false);
 		const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
 		const [currentProject, setCurrentProject] = useState(null);
+
+		const availableFractions = useMemo(() => Math.ceil(Math.random() * 1000), [mintAddress]);
 
 		function handleOpenModal() {
 			setIsModalOpen(true);
@@ -127,7 +129,7 @@ const Projects = () => {
 												Available Fractions
 											</p>
 											<p className="text-3xl font-semibold ml-2">
-												{Math.ceil(Math.random() * 1000)}
+												{availableFractions}
 											</p>
 										</div>
 										<div className="mb-4">
@@ -191,7 +193,7 @@ const Projects = () => {
 							</div>
 						</>
 					)}
-					{isModalOpen && <BuyFraction onClose={handleCloseModal} />}
+					{isModalOpen && <BuyFraction onClose={handleCloseModal} availableFractions={availableFractions} />}
 				</div>
 			</BackgroundImage>
 		);

@@ -2,21 +2,21 @@ import React, { useState } from "react";
 import { token_voltio_png } from "../assets";
 
 const BuyFraction = ({
-  onClose
+  onClose,
+  availableFractions
 }) => {
-  const pricePerFraction = 100;
-  const availableFractions = 1000;
   const [numberOfFractions, setNumberOfFractions] = useState(0);
 
-  const handleInputChange = (e) => {
+  const pricePerFraction = 100;
+
+  function handleInputChange(e) {
     setNumberOfFractions(e.target.value);
   };
 
-  const handlePayClick = () => {
+  async function handlePayClick() {
     // Add payment handling logic here
-    alert(`Paid ${numberOfFractions * pricePerFraction}`);
+    alert(`NFT purchased successfully!`);
   };
-
 
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
