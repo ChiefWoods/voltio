@@ -2,6 +2,10 @@
 
 ## Setup
 
+### Prerequisites
+
+Rename all `sample.env` files to `.env`.
+
 1. Start validator with Metaplex program pre-deployed
 
 ```
