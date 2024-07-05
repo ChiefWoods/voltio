@@ -15,7 +15,6 @@ import {
   AllProjects,
   Marketplace,
   ListEnergy,
-  Marketplace
 } from './pages';
 
 const App = () => {

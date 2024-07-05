@@ -13,8 +13,8 @@ const SideNav = ({ onClose }) => {
         <a href="/profile" className="text-white font-thin hover:scale-105 hover:text-white">Profile</a>
         <a href="/dashboard" className="text-white font-thin hover:scale-105 hover:text-white">Dashboard</a>
         <a href="/allprojects" className="text-white font-thin hover:scale-105 hover:text-white">Projects</a>
-        <a href="" className="text-white font-thin hover:scale-105 hover:text-white">Marketplace</a>
-        <a href="" className="text-white font-thin hover:scale-105 hover:text-white">Sell your energy</a>
+        <a href="/marketplace" className="text-white font-thin hover:scale-105 hover:text-white">Marketplace</a>
+        <a href="/listenergy" className="text-white font-thin hover:scale-105 hover:text-white">Sell your energy</a>
       </nav>
     </div>
   );
