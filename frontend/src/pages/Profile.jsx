@@ -2,14 +2,15 @@ import React, { useState, useEffect } from "react";
 import { BackgroundImage, TopBar } from "../components";
 import { IoGrid } from "react-icons/io5";
 import { FaList } from "react-icons/fa";
-import { profile, solar_panel1, token_voltio_png } from "../assets";
+import { profile, token_voltio_png } from "../assets";
+import { useWallet } from "@solana/wallet-adapter-react";
 
 const Profile = () => {
 	const [showNftList, setShowNftList] = useState(false);
 	const [animate, setAnimate] = useState(false);
 	const [nftsOwned, setNftsOwned] = useState([]);
-
-	const walletAddress = "E7snGTGKAX5VcUhpdwDqcfBPLoLV7MAxpcpwNCaga4Vq";
+	const [tokenAmount, setTokenAmount] = useState(0);
+	const { publicKey } = useWallet();
 
 	const handleToggleChange = () => {
 		setAnimate(true);
@@ -20,18 +21,28 @@ const Profile = () => {
 	useEffect(() => {
 		async function fetchData() {
 			try {
-				const data = await fetch(
-					`${import.meta.env.VITE_BACKEND_URL}/nft/owner/${walletAddress}`
-				).then((res) => res.json());
+				await fetch(
+					`${
+						import.meta.env.VITE_BACKEND_URL
+					}/nft/owner/${publicKey.toBase58()}`
+				)
+					.then((res) => res.json())
+					.then((data) => setNftsOwned(data));
 
-				setNftsOwned(data);
+				await fetch(
+					`${import.meta.env.VITE_BACKEND_URL}/tokens/${publicKey.toBase58()}`
+				)
+					.then((res) => res.json())
+					.then((data) => setTokenAmount(data.amount));
 			} catch (err) {
 				console.log(err);
 			}
 		}
 
-		fetchData();
-	}, []);
+		if (publicKey) {
+			fetchData();
+		}
+	}, [publicKey]);
 
 	return (
 		<BackgroundImage>
@@ -40,10 +51,12 @@ const Profile = () => {
 				<div className="flex flex-row items-center">
 					<img src={profile} className="w-[250px] rounded-full" />
 					<div className="ml-8 text-[40px]">
-						<p>23fna83nmdp</p>
+						<p className="overflow-hidden overflow-ellipsis max-w-[15ch]">
+							{publicKey?.toBase58()}
+						</p>
 						<div className="flex flex-row items-center">
 							<img src={token_voltio_png} className="w-[60px]" />
-							<p className="ml-2">288</p>
+							<p className="ml-2">{tokenAmount || ""}</p>
 						</div>
 					</div>
 				</div>
@@ -70,86 +83,27 @@ const Profile = () => {
 												</tr>
 											</thead>
 											<tbody>
-												<tr>
-													<td className="flex justify-center items-center py-4">
-														<img src={solar_panel1} className="w-[250px]" />
-													</td>
-													<td className="text-center text-white font-semibold py-4">
-														Project D
-													</td>
-													<td className="text-center text-white font-semibold py-4">
-														982
-													</td>
-													<td className="text-center text-white font-semibold py-4">
-														2/6/2024
-													</td>
-													<td className="text-center text-white font-semibold py-4">
-														<button className="bg-[#AF3BE0] rounded-3xl px-4 py-2 hover:scale-110">
-															Sell
-														</button>
-													</td>
-												</tr>
-
-												<tr>
-													<td className="flex justify-center items-center py-4">
-														<img src={solar_panel1} className="w-[250px]" />
-													</td>
-													<td className="text-center text-white font-semibold py-4">
-														Project D
-													</td>
-													<td className="text-center text-white font-semibold py-4">
-														982
-													</td>
-													<td className="text-center text-white font-semibold py-4">
-														2/6/2024
-													</td>
-													<td className="text-center text-white font-semibold py-4">
-														<button className="bg-[#AF3BE0] rounded-3xl px-4 py-2 hover:scale-110">
-															Sell
-														</button>
-													</td>
-												</tr>
-
-												<tr>
-													<td className="flex justify-center items-center py-4">
-														<img src={solar_panel1} className="w-[250px]" />
-													</td>
-													<td className="text-center text-white font-semibold py-4">
-														Project D
-													</td>
-													<td className="text-center text-white font-semibold py-4">
-														982
-													</td>
-													<td className="text-center text-white font-semibold py-4">
-														2/6/2024
-													</td>
-													<td className="text-center text-white font-semibold py-4">
-														<button className="bg-[#AF3BE0] rounded-3xl px-4 py-2 hover:scale-110">
-															Sell
-														</button>
-													</td>
-												</tr>
-
-												<tr>
-													<td className="flex justify-center items-center py-4">
-														<img src={solar_panel1} className="w-[250px]" />
-													</td>
-													<td className="text-center text-white font-semibold py-4">
-														Project D
-													</td>
-													<td className="text-center text-white font-semibold py-4">
-														982
-													</td>
-													<td className="text-center text-white font-semibold py-4">
-														2/6/2024
-													</td>
-													<td className="text-center text-white font-semibold py-4">
-														<button className="bg-[#AF3BE0] rounded-3xl px-4 py-2 hover:scale-110">
-															Sell
-														</button>
-													</td>
-												</tr>
-												{/* Additional rows as needed */}
+												{nftsOwned.map((nft) => (
+													<tr>
+														<td className="flex justify-center items-center py-4">
+															<img src={nft.json.image} className="w-[250px]" />
+														</td>
+														<td className="text-center text-white font-semibold py-4">
+															{nft.name}
+														</td>
+														<td className="text-center text-white font-semibold py-4">
+															{Math.ceil(Math.random() * 1000)}
+														</td>
+														<td className="text-center text-white font-semibold py-4">
+															04/07/2024
+														</td>
+														<td className="text-center text-white font-semibold py-4">
+															<button className="bg-[#AF3BE0] rounded-3xl px-4 py-2 hover:scale-110">
+																Sell
+															</button>
+														</td>
+													</tr>
+												))}
 											</tbody>
 										</table>
 									</div>
@@ -163,7 +117,7 @@ const Profile = () => {
 										{nftsOwned.map((nft) => {
 											return (
 												<div
-													key={nft.mint.address}
+													key={nft.address}
 													className="bg-[#434343] flex flex-col px-6 py-8 rounded-3xl"
 												>
 													<div className="flex items-center justify-center mb-4">
@@ -176,8 +130,11 @@ const Profile = () => {
 														<p className="font-semibold text-[28px]">
 															{nft.name}
 														</p>
-														<p>Fraction Holding:</p>
-														<p>Date Acquired:</p>
+														<p>
+															Fraction Holding:{" "}
+															{Math.ceil(Math.random() * 1000)}
+														</p>
+														<p>Date Acquired: 04/07/2024</p>
 													</div>
 												</div>
 											);
