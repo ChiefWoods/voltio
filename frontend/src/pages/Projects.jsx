@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { BackgroundImage, TopBar, ProjectCard } from "../components";
+import { BackgroundImage, TopBar, ProjectCard, BuyFraction } from "../components";
 import {
 	FaChevronCircleLeft,
 	FaChevronCircleRight,
@@ -12,22 +12,6 @@ const Projects = () => {
 	const { mintAddress } = useParams();
 	const navigate = useNavigate();
 	const [latestProjects, setLatestProjects] = useState([]);
-
-	useEffect(() => {
-		async function fetchData() {
-			try {
-				const data = await fetch(
-					`${import.meta.env.VITE_BACKEND_URL}/nft/collection`
-				).then((res) => res.json());
-
-				setLatestProjects(data);
-			} catch (err) {
-				console.log(err);
-			}
-		}
-
-		fetchData();
-	}, []);
 
 	if (mintAddress) {
 		const [isModalOpen, setIsModalOpen] = useState(false);
@@ -212,21 +196,21 @@ const Projects = () => {
 			</BackgroundImage>
 		);
 	} else {
-		// useEffect(() => {
-		// 	async function fetchData() {
-		// 		try {
-		// 			const data = await fetch(
-		// 				`${import.meta.env.VITE_BACKEND_URL}/nft/collection`
-		// 			).then((res) => res.json());
+		useEffect(() => {
+			async function fetchData() {
+				try {
+					const data = await fetch(
+						`${import.meta.env.VITE_BACKEND_URL}/nft/collection`
+					).then((res) => res.json());
 
-		// 			setLatestProjects(data);
-		// 		} catch (err) {
-		// 			console.log(err);
-		// 		}
-		// 	}
+					setLatestProjects(data);
+				} catch (err) {
+					console.log(err);
+				}
+			}
 
-		// 	fetchData();
-		// }, []);
+			fetchData();
+		}, []);
 
 		return (
 			<BackgroundImage>
