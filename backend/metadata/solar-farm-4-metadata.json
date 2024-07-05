@@ -1,6 +1,12 @@
 {
   "name": "Solar Farm 4",
   "image": "https://devnet.irys.xyz/epA2INOrDUdyf9RvwA_NAfR0pVXnCq7keGyVOs8kpEk",
+  "description": "Situated on reclaimed land near Port Klang, this expansive solar array powers Selangor's bustling industrial sector.",
   "location": "Selangor, Malaysia",
-  "output": "17 MW"
+  "output": 17,
+  "yearBuilt": 2020,
+  "annualYield": 18.9,
+  "activeCapacity": 250,
+  "pipelineCapacity": 275,
+  "developedBy": "EcoVolt Energy Systems"
 }
