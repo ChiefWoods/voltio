@@ -1,9 +1,10 @@
 import React from 'react'
-import { BackgroundImage } from '../components'
+import { BackgroundImage, TopBar } from '../components'
 const Marketplace = () => {
   return (
     <BackgroundImage>
-        <div className="bg-dg w-[60%] p-8 rounded-2xl">
+        <TopBar currentPage='Marketplace' />
+        <div className="bg-dg w-[60%] p-8 rounded-2xl mt-[100px]">
             <table className="w-[100%] mb-4">
                 <tr className="border-b-2 mb-4">
                     <th className="text-white p-4">Seller Add.</th>
