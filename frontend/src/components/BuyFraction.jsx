@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { token_voltio_png } from "../assets";
 
 const BuyFraction = ({
-  isOpen,
   onClose
 }) => {
   const pricePerFraction = 100;
@@ -18,7 +17,6 @@ const BuyFraction = ({
     alert(`Paid ${numberOfFractions * pricePerFraction}`);
   };
 
-  if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
@@ -27,7 +25,7 @@ const BuyFraction = ({
           <h2 className="text-[20px] font-semibold text-[#a1e5a1] pt-[10px]">Buy Fraction</h2>
           <button onClick={onClose} className="text-[30px] text-white hover:scale-105">&times;</button>
         </div>
-        <div className="mb-4 flex gap-[30px] mb-[20px]">
+        <div className="flex gap-[30px] mb-[20px]">
           <div className="">
             <p className="font-semibold mb-[6px]">Price per fraction: </p>
             <p className="flex"><img src={token_voltio_png} className='w-[28px] mr-[4px]' />{pricePerFraction}</p>

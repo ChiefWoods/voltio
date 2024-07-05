@@ -32,12 +32,12 @@ const DashboardLatest = () => {
             image={project.json.image}
             location={project.json.location}
             output={project.json.output + " MW/h"}
-            route={`/individualproject/${project.address}`}
+            route={`/projects/${project.address}`}
           />
         ))}
       </div>
       <div className="flex justify-end mt-4">
-        <a href='/allprojects' className="hover:scale-105 hover:text-white text-white font-bold p-[10px] rounded-[20px] flex">
+        <a href='/projects' className="hover:scale-105 hover:text-white text-white font-bold p-[10px] rounded-[20px] flex">
           View More<TbPlayerTrackNextFilled className="text-white mt-[4px] ml-[10px]" />
         </a>
       </div>
