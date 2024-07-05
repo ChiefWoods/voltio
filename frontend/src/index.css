@@ -1,4 +1,8 @@
-:root {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -11,7 +15,7 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
+} */
 
 a {
   font-weight: 500;
@@ -23,11 +27,10 @@ a:hover {
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+
+  background: #11141e;
+  min-height: 100vh; 
+ 
 }
 
 h1 {
@@ -35,34 +38,108 @@ h1 {
   line-height: 1.1;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+p{
+  color:white
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* styles.css */
+.gradient-ring-button {
+  position: relative;
+  overflow: hidden;
 }
+
+.gradient-ring-button::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  bottom: -4px;
+  left: -4px;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #9945FF, #14F195); /* Your gradient colors */
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.gradient-ring-button:hover::before {
+  opacity: 1;
+}
+
+.bg-dg{
+  background-color: #252525;
+}
+
+.custom-wallet-button{
+  background-color: #f56565 !important; /* Tailwind's bg-red-500 */
+  color: #ffffff !important; /* Tailwind's text-white */
+  padding: 0.5rem 1rem !important; /* Tailwind's px-4 py-2 */
+  border-radius: 0.375rem !important; /* Tailwind's rounded-md */
+  transition: all 0.2s ease-in-out;
+}
+
+.custom-wallet-button:hover {
+  background-color: #e53e3e !important; /* Tailwind's hover:bg-red-600 */
+}
+
+.list_mode_label {
+  width: 73px;
+  height: 40px;
+  position: relative;
+  display: block;
+  background: #000;
+  border-radius: 200px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.list_mode_label:after {
+  content: "";
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  background: linear-gradient(180deg, #777, #3a3a3a);
+  border-radius: 180px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+.list_mode_input {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+.list_mode_input:checked + .list_mode_label {
+  background: #000;
+}
+.list_mode_input:checked + .list_mode_label:after {
+  left: 70px;
+  transform: translateX(-100%);
+  background: linear-gradient(180deg, #777, #3a3a3a);
+}
+.list_mode_label:active:after {
+  width: 35px;
+}
+.list_mode_label .icon {
+  position: absolute;
+  width: 25px;
+  top: 10px;
+  z-index: 100;
+  transition: 0.3s;
+}
+.list_mode_label .icon:first-child {
+  left: 7px;
+  fill: #fff;
+}
+.list_mode_label .icon:last-child {
+  left: 40px;
+  fill: #7e7e7e;
+}
+.list_mode_input:checked + .list_mode_label .icon:first-child {
+  fill: #7e7e7e;
+}
+.list_mode_input:checked + .list_mode_label .icon:last-child {
+  fill: #fff;
+}
+
+
