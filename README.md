@@ -1,5 +1,7 @@
 # Voltio
 
+Now live on Devnet!
+
 Frontend - https://voltio.vercel.app/  
 Backend - https://voltio-backend.onrender.com
 
