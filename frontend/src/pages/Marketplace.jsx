@@ -20,7 +20,7 @@ const Marketplace = () => {
                     <td className="text-white text-center py-4 font-semibold">0.000460</td>
                     <td className="text-white text-center py-4 font-semibold">0.000115</td>
                     <td className="text-white text-center py-4 font-semibold">Subang Jaya, Selangor</td>
-                    <td className="text-white text-center py-4"><button className='bg-[#A1E5A1] px-6 py-2 rounded-3xl text-black font-semibold hover:scale-110'>BUY</button></td>
+                    <td className="text-white text-center py-4"><button className='bg-[#A1E5A1] px-6 py-2 rounded-3xl text-black font-semibold hover:scale-105'>BUY</button></td>
                 </tr>
                 <tr>
                     <td className="text-white text-center py-4 font-semibold">43ae3af8hua</td>
@@ -28,7 +28,7 @@ const Marketplace = () => {
                     <td className="text-white text-center py-4 font-semibold">0.000460</td>
                     <td className="text-white text-center py-4 font-semibold">0.000115</td>
                     <td className="text-white text-center py-4 font-semibold">Subang Jaya, Selangor</td>
-                    <td className="text-white text-center py-4"><button className='bg-[#A1E5A1] px-6 py-2 rounded-3xl text-black font-semibold hover:scale-110'>BUY</button></td>
+                    <td className="text-white text-center py-4"><button className='bg-[#A1E5A1] px-6 py-2 rounded-3xl text-black font-semibold hover:scale-105'>BUY</button></td>
                 </tr>
                 <tr>
                     <td className="text-white text-center py-4 font-semibold">43ae3af8hua</td>
@@ -36,7 +36,7 @@ const Marketplace = () => {
                     <td className="text-white text-center py-4 font-semibold">0.000460</td>
                     <td className="text-white text-center py-4 font-semibold">0.000115</td>
                     <td className="text-white text-center py-4 font-semibold">Subang Jaya, Selangor</td>
-                    <td className="text-white text-center py-4"><button className='bg-[#A1E5A1] px-6 py-2 rounded-3xl text-black font-semibold hover:scale-110'>BUY</button></td>
+                    <td className="text-white text-center py-4"><button className='bg-[#A1E5A1] px-6 py-2 rounded-3xl text-black font-semibold hover:scale-105'>BUY</button></td>
                 </tr>
             </table>
         </div>

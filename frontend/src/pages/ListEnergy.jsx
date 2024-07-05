@@ -35,7 +35,7 @@ const ListEnergy = () => {
           {avgEnergy} {energyUnit}
         </p>
 
-        <form className="flex flex-col md:flex-row md:items-center md:justify-center mt-[60px]">
+        <form className="flex flex-col md:flex-row md:items-center md:justify-center mt-[40px]">
           {/* Price Input */}
           <div className="flex flex-col items-start md:mr-4">
             <label htmlFor="price" className="block text-[16px]">
@@ -45,7 +45,7 @@ const ListEnergy = () => {
               type="text"
               name="price"
               id="price_input"
-              className="mt-1 border-b-[1px] border-gray-400 p-2 text-white outline-none"
+              className="mt-[2px] border-b-[1px] border-gray-400 p-[6px] text-white outline-none"
               style={{ borderBottomColor: '#7C7C7C', background: 'none' }}
               value={priceInput}
               onChange={handlePriceChange}
@@ -57,12 +57,12 @@ const ListEnergy = () => {
             <label htmlFor="capacity" className="block text-[16px]">
               Capacity ({energyUnit})
             </label>
-            <div className="flex items-center mt-1">
+            <div className="flex items-center mt-[2px]">
               <input
                 type="text"
                 name="capacity"
                 id="capacity_input"
-                className="border-b-[1px] border-gray-400 p-2 text-white outline-none mr-2"
+                className="border-b-[1px] border-gray-400 p-[6px] text-white outline-none mr-2"
                 style={{ borderBottomColor: '#7C7C7C', background: 'none' }}
                 value={capacityInput}
                 onChange={handleCapacityChange}
@@ -72,13 +72,13 @@ const ListEnergy = () => {
           </div>
 
           {/* Total Price Display */}
-          <div className="mt-4 md:mt-0 mr-4">
-            <div>Total Price:</div>
-            <span id="total_price" className="ml-2">${totalPrice.toFixed(2)}</span>
+          <div className="mt-4 md:mt-0 mr-4 mb-[6px]">
+            <div className='mb-[8px]'>Total Price:</div>
+            <span id="total_price" className="ml-[-30px]">${totalPrice.toFixed(2)}</span>
           </div>
 
           {/* List Button */}
-          <button type="button" className="ml-[20px] mt-4 bg-[#A1E5A1] text-[#1e1e1e] px-[40px] py-2 rounded-[50px] text-[16px]">
+          <button type="button" className="ml-[20px] mt-4 bg-[#A1E5A1] text-[#1e1e1e] px-[40px] py-2 rounded-[50px] text-[16px] font-bold hover:scale-105">
             List
           </button>
         </form>

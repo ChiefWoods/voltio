@@ -49,13 +49,13 @@ const Profile = () => {
 			<TopBar currentPage="profile" />
 			<div className="w-[60%] py-10">
 				<div className="flex flex-row items-center">
-					<img src={profile} className="w-[250px] rounded-full" />
+					<img src={profile} className="w-[160px] rounded-full" />
 					<div className="ml-8 text-[40px]">
 						<p className="overflow-hidden overflow-ellipsis max-w-[15ch]">
 							{publicKey?.toBase58()}
 						</p>
 						<div className="flex flex-row items-center">
-							<img src={token_voltio_png} className="w-[60px]" />
+							<img src={token_voltio_png} className="w-[50px]" />
 							<p className="ml-2">{tokenAmount || ""}</p>
 						</div>
 					</div>
@@ -68,9 +68,9 @@ const Profile = () => {
 						}`}
 					>
 						{showNftList ? (
-							<div className="bg-dg w-[90%] mx-auto p-12 mt-10 rounded-2xl">
+							<div className="bg-dg w-[96%] mx-auto p-12 mt-10 rounded-2xl">
 								<div>
-									<p className="font-semibold text-[46px]">NFT(s) List</p>
+									<p className="font-semibold text-[30px]">NFT(s) List</p>
 									<div className="mt-8">
 										<table className="w-[100%]">
 											<thead>
@@ -110,9 +110,9 @@ const Profile = () => {
 								</div>
 							</div>
 						) : (
-							<div className="bg-dg w-[90%] mx-auto p-12 mt-10 rounded-2xl">
+							<div className="bg-dg w-[96%] mx-auto p-12 mt-10 rounded-2xl">
 								<div>
-									<p className="font-semibold text-[46px]">NFT(s)</p>
+									<p className="font-semibold text-[30px]">NFT(s)</p>
 									<div className="grid grid-cols-3 gap-4 mt-4">
 										{nftsOwned.map((nft) => {
 											return (

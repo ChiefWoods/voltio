@@ -23,7 +23,7 @@ const AllProjects = () => {
 	return (
 		<BackgroundImage>
 			<TopBar currentPage="projects" />
-			<div className="max-w-[824px] mx-auto px-4 sm:px-6 lg:px-8 pt-[20px] pb-8 bg-[#252525] mt-[60px] rounded-[10px] mb-[200px]">
+			<div className="w-[824px] max-w-[824px] mx-auto px-4 sm:px-6 lg:px-8 pt-[20px] pb-8 bg-[#252525] mt-[60px] rounded-[10px] mb-[200px]">
 				<h2 className="text-[30px] font-semibold mb-[34px] text-[#a1e5a1]">
 					All Projects
 				</h2>
