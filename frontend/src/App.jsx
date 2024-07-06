@@ -35,13 +35,13 @@ const App = () => {
         <WalletProvider wallets={wallets} autoConnect>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/profile" element={<Profile />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="projects/:mintAddress?" element={<Projects />} />
-            <Route path="/profile" element={<Profile />} />
             <Route path="/marketplace" element={<Marketplace />} />
             <Route path="/energy" element={<Energy/>}/>
 			      <Route path="/faucet" element={<Faucet/>} />
-            <Route path='/exchange' element={<Exchange/>}/>
+						<Route path='/exchange' element={<Exchange/>}/>
             <Route path="/test" element={<Test />} />
           </Routes>
         </WalletProvider>
