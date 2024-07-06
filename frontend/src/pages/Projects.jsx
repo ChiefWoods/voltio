@@ -58,13 +58,13 @@ const Projects = () => {
 					).then((res) => res.json());
 
 					setLatestProjects(data);
+          setLoading(false);
 					setCurrentProject(
 						data.find((project) => project.address === mintAddress)
 					);
-          setLoading(false);
+          
 				} catch (err) {
 					console.log(err);
-          setLoading(false);
 				}
 			}
 
