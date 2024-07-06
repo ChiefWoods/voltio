@@ -8,9 +8,6 @@ import { ATOMIC_UNITS_PER_TOKEN, mint } from "./get-mint.js";
 export async function mintTokens(recipientAddress, amount) {
   const tokenAccount = await getOrCreateAssociatedTokenAccount(connection, wallet, mint, new PublicKey(recipientAddress));
 
-  const txSig = await mintTo(connection, wallet, mint, tokenAccount.address, wallet, amount);
+  const txSig = await mintTo(connection, wallet, mint, tokenAccount.address, wallet, amount * ATOMIC_UNITS_PER_TOKEN);
   console.log(`Tokens minted: ${getExplorerLink("tx", txSig, process.env.CLUSTER)}`);
 }
-
-// Pass recipient address and amount as arguments
-await mintTokens(process.argv[2], Number(process.argv[3]) * ATOMIC_UNITS_PER_TOKEN);

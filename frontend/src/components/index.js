@@ -5,6 +5,7 @@ import StatsBox from "./StatsBox";
 import DashboardLatest from "./DashboardLatest";
 import ProjectCard from "./ProjectCard";
 import BuyFraction from "./BuyFraction";
+import IntegratedTerminal from "./IntegratedTerminal";
 
 export{
     BackgroundImage,
@@ -14,4 +15,5 @@ export{
     DashboardLatest,
     ProjectCard,
     BuyFraction,
+    IntegratedTerminal
 }
