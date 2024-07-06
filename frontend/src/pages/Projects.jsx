@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { BackgroundImage, TopBar, ProjectCard, BuyFraction } from "../components";
+import { BackgroundImage, TopBar, ProjectCard, BuyFraction,Spinner } from "../components";
 import {
 	FaChevronCircleLeft,
 	FaChevronCircleRight,
@@ -12,7 +12,7 @@ const Projects = () => {
 	const { mintAddress } = useParams();
 	const navigate = useNavigate();
 	const [latestProjects, setLatestProjects] = useState([]);
-
+  const [loading,setLoading]= useState(true);
 	if (mintAddress) {
 		const [isModalOpen, setIsModalOpen] = useState(false);
 		const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
@@ -61,8 +61,10 @@ const Projects = () => {
 					setCurrentProject(
 						data.find((project) => project.address === mintAddress)
 					);
+          setLoading(false);
 				} catch (err) {
 					console.log(err);
+          setLoading(false);
 				}
 			}
 
@@ -217,11 +219,13 @@ const Projects = () => {
 		return (
 			<BackgroundImage>
 				<TopBar currentPage="projects" />
-				<div className="max-w-[824px] mx-auto px-4 sm:px-6 lg:px-8 pt-[20px] pb-8 bg-[#252525] mt-[60px] rounded-[10px] mb-[200px]">
+				<div className="w-[824px] mx-auto px-4 sm:px-6 lg:px-8 pt-[20px] pb-8 bg-[#252525] mt-[60px] rounded-[10px] mb-[200px]">
 					<h2 className="text-[30px] font-semibold mb-[34px] text-[#a1e5a1]">
 						All Projects
 					</h2>
-					<div className="grid grid-cols-1 sm:grid-cols-3 gap-[30px]">
+          {loading?(<Spinner/>):
+          (
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-[30px]">
 						{latestProjects.map((project) => (
 							<ProjectCard
 								key={project.address}
@@ -232,7 +236,8 @@ const Projects = () => {
 								route={`/projects/${project.address}`}
 							/>
 						))}
-					</div>
+					</div>)}
+					
 				</div>
 			</BackgroundImage>
 		);
