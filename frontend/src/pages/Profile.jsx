@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BackgroundImage, TopBar } from "../components";
+import { BackgroundImage, TopBar,Spinner } from "../components";
 import { IoGrid } from "react-icons/io5";
 import { FaList } from "react-icons/fa";
 import { profile, token_voltio_png } from "../assets";
@@ -11,6 +11,7 @@ const Profile = () => {
 	const [nftsOwned, setNftsOwned] = useState([]);
 	const [tokenAmount, setTokenAmount] = useState(0);
 	const { publicKey } = useWallet();
+  const[loading ,setLoading]=useState(true);
 
 	const handleToggleChange = () => {
 		setAnimate(true);
@@ -19,32 +20,34 @@ const Profile = () => {
 	};
 
 	useEffect(() => {
-		async function fetchData() {
-			try {
-				await fetch(
-					`${
-						import.meta.env.VITE_BACKEND_URL
-					}/nft/owner/${publicKey.toBase58()}`
-				)
-					.then((res) => res.json())
-					.then((data) => setNftsOwned(data));
+    async function fetchData() {
+      if (!publicKey) {
+        setTokenAmount(0);
+        setLoading(false);
+        return;
+      }
 
-				await fetch(
-					`${import.meta.env.VITE_BACKEND_URL}/tokens/${publicKey.toBase58()}`
-				)
-					.then((res) => res.json())
-					.then((data) => setTokenAmount(data.amount));
-			} catch (err) {
-				console.log(err);
-			}
-		}
+      try {
+        const nftResponse = await fetch(
+          `${import.meta.env.VITE_BACKEND_URL}/nft/owner/${publicKey.toBase58()}`
+        );
+        const nftsData = await nftResponse.json();
+        setNftsOwned(nftsData);
 
-		if (publicKey) {
-			fetchData();
-		} else {
-			setTokenAmount(0);
-		}
-	}, [publicKey]);
+        const tokenResponse = await fetch(
+          `${import.meta.env.VITE_BACKEND_URL}/tokens/${publicKey.toBase58()}`
+        );
+        const tokenData = await tokenResponse.json();
+        setTokenAmount(tokenData.amount);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchData();
+  }, [publicKey]);
 
 	return (
 		<BackgroundImage>
@@ -73,7 +76,8 @@ const Profile = () => {
 							<div className="bg-dg w-[90%] mx-auto p-12 mt-10 rounded-2xl">
 								<div>
 									<p className="font-semibold text-[46px]">NFT(s) List</p>
-									<div className="mt-8">
+                  
+                    <div className="mt-8">
 										<table className="w-[100%]">
 											<thead>
 												<tr className="border-b-2">
@@ -85,7 +89,9 @@ const Profile = () => {
 												</tr>
 											</thead>
 											<tbody>
-												{nftsOwned.map((nft) => (
+                        
+                        
+                      {nftsOwned.map((nft) => (
 													<tr>
 														<td className="flex justify-center items-center py-4">
 															<img src={nft.json.image} className="w-[250px]" />
@@ -106,10 +112,13 @@ const Profile = () => {
 														</td>
 													</tr>
 												))}
+                          
 												
 											</tbody>
 										</table>
 									</div>
+                  
+									
 								</div>
 							</div>
 						) : (
