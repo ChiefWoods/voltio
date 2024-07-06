@@ -14,7 +14,8 @@ import {
   Projects,
   Marketplace,
   Energy,
-  Faucet
+	Faucet,
+	Exchange
 } from './pages';
 
 const App = () => {
@@ -37,8 +38,9 @@ const App = () => {
             <Route path="/profile" element={<Profile />} />
             <Route path="/marketplace" element={<Marketplace />} />
             <Route path="/energy" element={<Energy/>}/>
-            <Route path="/test" element={<Test />} />
 			      <Route path="/faucet" element={<Faucet/>} />
+            <Route path='/exchange' element={<Exchange/>}/>
+            <Route path="/test" element={<Test />} />
           </Routes>
         </WalletProvider>
       </ConnectionProvider>
