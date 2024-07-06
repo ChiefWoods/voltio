@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { BackgroundImage, TopBar, ProjectCard } from "../components";
+import { BackgroundImage, TopBar, ProjectCard, BuyFraction } from "../components";
 import {
 	FaChevronCircleLeft,
 	FaChevronCircleRight,
@@ -13,26 +13,12 @@ const Projects = () => {
 	const navigate = useNavigate();
 	const [latestProjects, setLatestProjects] = useState([]);
 
-	useEffect(() => {
-		async function fetchData() {
-			try {
-				const data = await fetch(
-					`${import.meta.env.VITE_BACKEND_URL}/nft/collection`
-				).then((res) => res.json());
-
-				setLatestProjects(data);
-			} catch (err) {
-				console.log(err);
-			}
-		}
-
-		fetchData();
-	}, []);
-
 	if (mintAddress) {
 		const [isModalOpen, setIsModalOpen] = useState(false);
 		const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
 		const [currentProject, setCurrentProject] = useState(null);
+
+		const availableFractions = useMemo(() => Math.ceil(Math.random() * 1000), [mintAddress]);
 
 		function handleOpenModal() {
 			setIsModalOpen(true);
@@ -143,7 +129,7 @@ const Projects = () => {
 												Available Fractions
 											</p>
 											<p className="text-3xl font-semibold ml-2">
-												{Math.ceil(Math.random() * 1000)}
+												{availableFractions}
 											</p>
 										</div>
 										<div className="mb-4">
@@ -207,26 +193,26 @@ const Projects = () => {
 							</div>
 						</>
 					)}
-					{isModalOpen && <BuyFraction onClose={handleCloseModal} />}
+					{isModalOpen && <BuyFraction onClose={handleCloseModal} availableFractions={availableFractions} />}
 				</div>
 			</BackgroundImage>
 		);
 	} else {
-		// useEffect(() => {
-		// 	async function fetchData() {
-		// 		try {
-		// 			const data = await fetch(
-		// 				`${import.meta.env.VITE_BACKEND_URL}/nft/collection`
-		// 			).then((res) => res.json());
+		useEffect(() => {
+			async function fetchData() {
+				try {
+					const data = await fetch(
+						`${import.meta.env.VITE_BACKEND_URL}/nft/collection`
+					).then((res) => res.json());
 
-		// 			setLatestProjects(data);
-		// 		} catch (err) {
-		// 			console.log(err);
-		// 		}
-		// 	}
+					setLatestProjects(data);
+				} catch (err) {
+					console.log(err);
+				}
+			}
 
-		// 	fetchData();
-		// }, []);
+			fetchData();
+		}, []);
 
 		return (
 			<BackgroundImage>

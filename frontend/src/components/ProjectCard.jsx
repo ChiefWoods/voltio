@@ -29,7 +29,7 @@ const ProjectCard = ({
 				</p>
 				<p className="text-base font-thin flex mt-[6px]">
 					<AiFillThunderbolt className="mr-[10px] mt-[6px] text-[#a1e5a1]" />
-					{output}
+					{output} MW/h
 				</p>
 			</div>
 			<div className="px-1">
