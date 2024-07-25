@@ -1,21 +1,21 @@
-import Homepage from "./Homepage";
-import IndiProject from "./indi_project";
+import Home from "./Home";
 import Profile from "./Profile"
 import Test from "./Test";
 import Dashboard from "./Dashboard";
-import AllProjects from "./AllProjects";
+import Projects from "./Projects";
 import Marketplace from "./Marketplace";
-import ListEnergy from "./ListEnergy";
+import Energy from "./Energy";
 import Faucet from "./Faucet";
+import Exchange from "./Exchange";
 
 export {
-  Homepage,
-  IndiProject,
+  Home,
   Profile,
   Test,
   Dashboard,
-  AllProjects,
+  Projects,
   Marketplace,
-  ListEnergy,
-  Faucet
+  Energy,
+  Faucet,
+  Exchange
 }

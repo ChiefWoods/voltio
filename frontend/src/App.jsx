@@ -1,46 +1,48 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react';
-import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
-import { PhantomWalletAdapter, SolflareWalletAdapter } from '@solana/wallet-adapter-wallets';
-import { clusterApiUrl } from '@solana/web3.js';
-import '@solana/wallet-adapter-react-ui/styles.css';
+import React, { useMemo } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {
+	ConnectionProvider,
+	WalletProvider,
+} from "@solana/wallet-adapter-react";
+import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
+import {
+	PhantomWalletAdapter,
+	SolflareWalletAdapter,
+} from "@solana/wallet-adapter-wallets";
+import { clusterApiUrl } from "@solana/web3.js";
+import "@solana/wallet-adapter-react-ui/styles.css";
 
 import {
-  Homepage,
-  IndiProject,
+  Home,
   Profile,
   Test,
   Dashboard,
-  AllProjects,
+  Projects,
   Marketplace,
-  ListEnergy,
-  Faucet
+  Energy,
+	Faucet,
+	Exchange
 } from './pages';
 
 const App = () => {
-  // Define network, endpoint, and wallets
-  const network = WalletAdapterNetwork.Devnet;
-  const endpoint = clusterApiUrl(network);
-  const wallets = [
-    new PhantomWalletAdapter(),
-    new SolflareWalletAdapter(),
-  ];
+	const network = WalletAdapterNetwork.Devnet;
+	const endpoint = useMemo(() => clusterApiUrl(network), [network]);
+  const wallets = useMemo(() => [new PhantomWalletAdapter(), new SolflareWalletAdapter()], [network]);
 
   return (
     <BrowserRouter>
       <ConnectionProvider endpoint={endpoint}>
         <WalletProvider wallets={wallets} autoConnect>
           <Routes>
-            <Route path="/" element={<Homepage />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="individualproject/:mintAddress" element={<IndiProject />} />
+            <Route path="/" element={<Home />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/test" element={<Test />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="projects/:mintAddress?" element={<Projects />} />
             <Route path="/marketplace" element={<Marketplace />} />
-            <Route path="/allprojects" element={<AllProjects/>}/>
-            <Route path="/listenergy" element={<ListEnergy/>}/>
-			<Route path="/faucet" element={<Faucet/>}/>
+            <Route path="/energy" element={<Energy/>}/>
+			      <Route path="/faucet" element={<Faucet/>} />
+						<Route path='/exchange' element={<Exchange/>}/>
+            <Route path="/test" element={<Test />} />
           </Routes>
         </WalletProvider>
       </ConnectionProvider>
