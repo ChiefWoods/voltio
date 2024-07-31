@@ -52,8 +52,8 @@ const TopBar = ({ currentPage = "CURRENT PAGE" }) => {
 						{currentPage}
 					</span>
 				</div>
-				<div className="flex items-center gap-x-5">
-					<div className="flex items-center gap-x-5 max-md:flex-col max-md:items-start">
+				<div className="flex items-center gap-x-5 self-end max-sm:flex-col-reverse max-sm:items-end">
+					<div className="flex items-center gap-x-5 max-md:flex-col max-md:items-start ">
 						<WalletMultiButton className="custom-wallet-button" />
 						<span className="mr-[60px] flex items-center">
 							<img
@@ -63,11 +63,11 @@ const TopBar = ({ currentPage = "CURRENT PAGE" }) => {
 							{tokenAmount}
 						</span>
 					</div>
-					
 					<button className="text-[40px]" onClick={toggleSideNav}>
 						<MdTableRows />
 					</button>
 				</div>
+				
 			</div>
 			{isSideNavOpen && <SideNav onClose={toggleSideNav} />}
 		</WalletModalProvider>
