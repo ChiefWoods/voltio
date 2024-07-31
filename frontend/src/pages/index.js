@@ -1,4 +1,3 @@
-import Home from "./Home";
 import Profile from "./Profile"
 import Test from "./Test";
 import Dashboard from "./Dashboard";
@@ -7,9 +6,9 @@ import Marketplace from "./Marketplace";
 import Energy from "./Energy";
 import Faucet from "./Faucet";
 import Exchange from "./Exchange";
+import ConnectWallet from './ConnectWallet';
 
 export {
-  Home,
   Profile,
   Test,
   Dashboard,
@@ -17,5 +16,6 @@ export {
   Marketplace,
   Energy,
   Faucet,
-  Exchange
+  Exchange,
+  ConnectWallet
 }

@@ -16,7 +16,7 @@ import { IoWallet } from "react-icons/io5";
 import { BackgroundImage } from "../components";
 import "@solana/wallet-adapter-react-ui/styles.css";
 
-const Home = () => {
+const ConnectWallet = () => {
 	const navigate = useNavigate();
 	const { connection } = useConnection();
 	const { publicKey } = useWallet();
@@ -70,4 +70,4 @@ const Home = () => {
 	);
 };
 
-export default Home;
+export default ConnectWallet;
