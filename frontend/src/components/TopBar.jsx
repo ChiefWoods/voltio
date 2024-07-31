@@ -39,28 +39,31 @@ const TopBar = ({ currentPage = "CURRENT PAGE" }) => {
 
 	return (
 		<WalletModalProvider>
-			<div className="w-full text-white flex justify-between items-center bg-transparent px-[60px] pt-[70px] pb-[10px]">
-				<div className="flex items-center">
+			<div className="w-full text-white flex justify-between items-center bg-transparent px-[60px] pt-[70px] pb-[10px] max-sm:px-[24px]">
+				<div className="flex items-center max-md:flex-col max-md:items-start" >
 					<a href="/dashboard">
 						<img
 							src={voltio_logo_white_png}
 							alt="Voltio Logo"
-							className="h-[60px] mr-4"
+							className="h-[60px] mr-4 max-sm:h-[42px]"
 						/>
 					</a>
-					<span className="text-xl font-light ml-[30px] text-transform: uppercase">
+					<span className="text-xl font-light ml-[30px] text-transform: uppercase max-sm:ml-[12px] max-sm:text-lg">
 						{currentPage}
 					</span>
 				</div>
 				<div className="flex items-center gap-x-5">
-					<WalletMultiButton className="custom-wallet-button" />
-					<span className="mr-[60px] flex items-center">
-						<img
-							src={token_voltio_png}
-							className="w-[28px] mt-[2px] mr-[10px]"
-						/>
-						{tokenAmount}
-					</span>
+					<div className="flex items-center gap-x-5 max-md:flex-col max-md:items-start">
+						<WalletMultiButton className="custom-wallet-button" />
+						<span className="mr-[60px] flex items-center">
+							<img
+								src={token_voltio_png}
+								className="w-[28px] mt-[2px] mr-[10px]"
+							/>
+							{tokenAmount}
+						</span>
+					</div>
+					
 					<button className="text-[40px]" onClick={toggleSideNav}>
 						<MdTableRows />
 					</button>
