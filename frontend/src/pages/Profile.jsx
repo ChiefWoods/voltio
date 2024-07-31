@@ -50,7 +50,7 @@ const Profile = () => {
 		<BackgroundImage>
 			<TopBar currentPage="profile" />
 			<div className="w-[60%] py-10">
-				<div className="flex flex-row items-center">
+				<div className="flex flex-row items-center max-md:flex-col">
 					<img src={profile} className="w-[250px] rounded-full" />
 					<div className="ml-8 text-[40px]">
 						<p className="overflow-hidden overflow-ellipsis max-w-[15ch]">
