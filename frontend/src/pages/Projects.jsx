@@ -80,9 +80,9 @@ const Projects = () => {
 				<TopBar currentPage="project" />
 				<div className="mt-[50px] mb-[100px]">
 					{currentProject && (
-						<>
-							<div className="flex flex-row mb-10 items-center align-center place-content-center">
-								<div className="flex items-center cursor-pointer">
+						<div className="flex flex-col items-stretch mx-[5%]">
+							<div className="flex flex-row mb-10 items-center align-center place-content-center" >
+								<div className="flex items-center cursor-pointer max-md:hidden ">
 									<button onClick={showPreviousProject}>
 										<FaChevronCircleLeft className="text-white text-[40px]" />
 									</button>
@@ -92,15 +92,15 @@ const Projects = () => {
 									src={currentProject.json.image}
 									alt="Project"
 								/>
-								<div className="flex items-center cursor-pointer">
+								<div className="flex items-center cursor-pointer  max-md:hidden">
 									<button onClick={showNextProject}>
 										<FaChevronCircleRight className="text-white text-[40px]" />
 									</button>
 								</div>
 							</div>
-							<div>
-								<div className="flex flex-row justify-between">
-									<div className="bg-dg w-[70%] p-6 rounded-2xl">
+							<div className="">
+								<div className="flex flex-row justify-between max-md:flex-col">
+									<div className="bg-dg w-[70%] max-md:w-[100%] p-6 rounded-2xl">
 										<p className="text-[40px] font-semibold">
 											{currentProject.name}
 										</p>
@@ -125,7 +125,7 @@ const Projects = () => {
 										</button>
 									</div>
 
-									<div className="bg-dg w-[20%] p-6 rounded-2xl">
+									<div className="bg-dg w-[20%]  max-md:w-[100%] max-md:mt-8 p-6 rounded-2xl max-md:flex max-md:justify-between max-sm:flex-col">
 										<div className="mb-4">
 											<p className="text-[#A1E5A1] font-semibold">
 												Available Fractions
@@ -150,8 +150,8 @@ const Projects = () => {
 										</div>
 									</div>
 								</div>
-								<div className="bg-dg rounded-2xl p-6 mt-8 mb-8">
-									<table className="w-[100%]">
+								<div className="bg-dg rounded-2xl p-6 mt-8 mb-8 overflow-scroll max-sm:hidden">
+									<table className=" overflow-scroll">
 										<thead>
 											<tr className="border-b-2">
 												<th className="text-[#A1E5A1] text-[20px]">
@@ -193,7 +193,7 @@ const Projects = () => {
 									</table>
 								</div>
 							</div>
-						</>
+						</div>
 					)}
 					{isModalOpen && <BuyFraction onClose={handleCloseModal} availableFractions={availableFractions} />}
 				</div>
@@ -208,8 +208,10 @@ const Projects = () => {
 					).then((res) => res.json());
 
 					setLatestProjects(data);
+					setLoading(false);
 				} catch (err) {
 					console.log(err);
+					setLoading(false);
 				}
 			}
 
@@ -219,13 +221,13 @@ const Projects = () => {
 		return (
 			<BackgroundImage>
 				<TopBar currentPage="projects" />
-				<div className="w-[824px] mx-auto px-4 sm:px-6 lg:px-8 pt-[20px] pb-8 bg-[#252525] mt-[60px] rounded-[10px] mb-[200px]">
+				<div className="w-[824px] max-md:w-[80%] px-10 sm:px-6 lg:px-8 pt-[20px] pb-[20px] bg-[#252525] mt-[60px] rounded-[10px] ">
 					<h2 className="text-[30px] font-semibold mb-[34px] text-[#a1e5a1]">
 						All Projects
 					</h2>
           {loading?(<Spinner/>):
           (
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-[30px]">
+          <div className="grid justify-items-center grid-cols-3 max-sm:grid-cols-1 max-md:grid-cols-2  gap-[30px] max-md:gap-[20px] ">
 						{latestProjects.map((project) => (
 							<ProjectCard
 								key={project.address}

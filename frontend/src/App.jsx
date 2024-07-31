@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import {
 	ConnectionProvider,
 	WalletProvider,
@@ -13,7 +13,6 @@ import { clusterApiUrl } from "@solana/web3.js";
 import "@solana/wallet-adapter-react-ui/styles.css";
 
 import {
-  Home,
   Profile,
   Test,
   Dashboard,
@@ -21,7 +20,8 @@ import {
   Marketplace,
   Energy,
 	Faucet,
-	Exchange
+	Exchange,
+	ConnectWallet
 } from './pages';
 
 const App = () => {
@@ -34,15 +34,17 @@ const App = () => {
       <ConnectionProvider endpoint={endpoint}>
         <WalletProvider wallets={wallets} autoConnect>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route exact path="/" element={<Navigate to="dashboard" />}>
+			</Route>
             <Route path="/profile" element={<Profile />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="projects/:mintAddress?" element={<Projects />} />
             <Route path="/marketplace" element={<Marketplace />} />
             <Route path="/energy" element={<Energy/>}/>
-			      <Route path="/faucet" element={<Faucet/>} />
-						<Route path='/exchange' element={<Exchange/>}/>
+			<Route path="/faucet" element={<Faucet/>} />
+			<Route path='/exchange' element={<Exchange/>}/>
             <Route path="/test" element={<Test />} />
+			<Route path="/connect-wallet" element={<ConnectWallet />} />
           </Routes>
         </WalletProvider>
       </ConnectionProvider>

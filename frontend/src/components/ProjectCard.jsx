@@ -15,7 +15,7 @@ const ProjectCard = ({
 	};
 
 	return (
-		<div className="max-w-[250px] rounded-[30px] overflow-hidden shadow-lg bg-[#434343] py-[24px] px-[32px]">
+		<div className="max-w-[250px] rounded-[30px] overflow-hidden shadow-lg bg-[#434343] py-[24px] px-[32px] max-sm:px-[18px] max-sm:py-[24px]">
 			<img
 				className="w-[210px] h-[100px] object-cover rounded-lg"
 				src={image}
