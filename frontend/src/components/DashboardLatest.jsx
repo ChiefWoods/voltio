@@ -28,7 +28,7 @@ const DashboardLatest = () => {
     <div className="w-[824px] max-md:w-[80%] px-10 sm:px-6 lg:px-8 pt-[20px] pb-[20px] bg-[#252525] mt-[60px] rounded-[10px] ">
       <h2 className="text-[30px] font-semibold mb-[34px] text-[#a1e5a1]">Invest in our latest projects</h2>
       {loading?(<Spinner/>):(<div className="grid justify-items-center grid-cols-3 max-sm:grid-cols-1 max-md:grid-cols-2  gap-[30px] max-md:gap-[20px] ">
-        {latestProjects.map((project) => (
+        {latestProjects.slice(0, 3).map((project) => (
           <ProjectCard
             key={project.address}
             name={project.name}
