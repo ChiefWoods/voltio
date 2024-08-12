@@ -17,8 +17,8 @@ const Exchange = () => {
   return (
     <div>
         <BackgroundImage>
-            <TopBar/>
-            <div id="integrated-terminal" className='mt-12 bg-dg p-4 rounded-3xl' style={{ height: '500px', width: '30%' }}></div>
+            <TopBar currentPage='Exchange'/>
+            <div id="integrated-terminal" className='mt-12 bg-dg p-4 rounded-3xl h-500 w-30 max-sm:w-[90%]'></div>
         </BackgroundImage>
       
     </div>
