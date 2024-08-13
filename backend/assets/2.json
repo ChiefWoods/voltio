@@ -1,0 +1,16 @@
+{
+  "name": "Solar Farm 3",
+  "image": "https://devnet.irys.xyz/dANZyIfP52HSY7Ff44zuK2P04zINq-5aJks3AuuiykE",
+  "description": "Located near the southern coast, this cutting-edge solar farm takes advantage of Johor's year-round tropical climate.",
+  "location": "Johor, Malaysia",
+  "output": 58,
+  "yearBuilt": 2018,
+  "annualYield": 20.1,
+  "activeCapacity": 280,
+  "pipelineCapacity": 300,
+  "developedBy": "Sunergy International",
+  "properties": {
+    "files": [],
+    "category": "image"
+  }
+}
