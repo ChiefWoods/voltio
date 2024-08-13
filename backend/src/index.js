@@ -1,64 +1,63 @@
 import express, { Router } from "express";
 import cors from "cors";
-import { getNftByMint } from "./get-nft-by-mint.js";
-import { getNftByOwner } from "./get-nft-by-owner.js";
-import { getNftCollection } from "./get-nft-collection.js";
-import { getTokens } from "./get-tokens.js";
-import { transferTokens } from "./transfer-tokens.js";
-import { transferNft } from "./transfer-nft.js";
-import { mintTokens } from "./mint-token.js";
+import { mint, mintToken, fetchTokens, transferTokens } from "./mint.js";
+import { getAllNfts, getNftByAddress, getNftByOwner, transferNft } from "./nft.js";
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
+const mintRouter = Router();
 const nftRouter = Router();
-const transferRouter = Router();
 
 const port = process.env.PORT || 8000;
 
-nftRouter
-  // Get NFT by mint address
-  .get("/mint/:mintAddress", async (req, res) => {
+app
+  // Token faucet
+  .get("/api/faucet", async (req, res) => {
     try {
-      const { mintAddress } = req.params;
+      const { address, amount } = req.params;
 
-      const nfts = await getNftByMint(mintAddress);
+      await mintToken(address, amount);
 
-      res.status(200).json(nfts);
+      res.status(200).json({ message: `${amount} tokens airdropped to ${address} successfully.` });
     } catch (err) {
-      console.log(err);
-      res.status(500).json({ error: "Failed to retrieve NFTs." });
-    }
-  })
-  // Get NFT by owner address
-  .get("/owner/:ownerAddress", async (req, res) => {
-    try {
-      const { ownerAddress } = req.params;
-
-      const nfts = await getNftByOwner(ownerAddress);
-
-      res.status(200).json(nfts);
-    } catch (err) {
-      console.log(err);
-      res.status(500).json({ error: "Failed to retrieve NFTs." });
-    }
-  })
-  // Get NFT collection
-  .get("/collection", async (req, res) => {
-    try {
-      const nfts = await getNftCollection();
-
-      res.status(200).json(nfts);
-    } catch (err) {
-      console.log(err);
-      res.status(500).json({ error: "Failed to retrieve NFTs." });
+      console.error(err);
+      res.status(500).json({ error: "Failed to airdrop tokens." });
     }
   });
 
-transferRouter
+mintRouter
+  // Fetch tokens
+  .get("/tokens", async (req, res) => {
+    try {
+      const { address } = req.params;
+
+      const amount = await fetchTokens(address);
+
+      res.status(200).json({
+        message: `Tokens from ${address} fetched successfully.`,
+        amount,
+      });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: "Failed to fetch owner tokens." });
+    }
+  })
+  // Fetch mint
+  .get("", async (req, res) => {
+    try {
+      res.status(200).json({
+        message: "Mint fetched successfully.",
+        mint
+      });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: "Failed to fetch Voltio mint." });
+    }
+  })
   // Transfer tokens
-  .post("/tokens", async (req, res) => {
+  .post("/transfer", async (req, res) => {
     try {
       const { senderSecretKey, recipientAddress, amount } = req.body;
 
@@ -66,53 +65,67 @@ transferRouter
 
       res.status(200).json({ message: `${amount} tokens transferred to ${recipientAddress} successfully.` });
     } catch (err) {
-      console.log(err);
+      console.error(err);
       res.status(500).json({ error: "Failed to transfer tokens." });
+    }
+  });
+
+nftRouter
+  // Get all NFTs
+  .get("/collection", async (req, res) => {
+    try {
+      const nfts = await getAllNfts();
+
+      res.status(200).json({
+        message: "NFTs fetched successfully.",
+        nfts
+      });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: "Failed to fetch NFTs." });
+    }
+  })
+  .get("", async (req, res) => {
+    try {
+      const { mintAddress, ownerAddress } = req.query;
+
+      if (mintAddress && !ownerAddress) {
+        // Get NFT by mint address
+        const nft = await getNftByAddress(mintAddress);
+
+        res.status(200).json({
+          message: "NFT fetched successfully.",
+          nft
+        });  
+      } else if (ownerAddress && !mintAddress) {
+        // Get NFTs by owner address
+        const nfts = await getNftByOwner(ownerAddress);
+
+        res.status(200).json({
+          message: "NFTs fetched successfully.",
+          nfts
+        });  
+      }
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: "Failed to fetch NFT." });
     }
   })
   // Transfer NFT
-  .post("/nft", async (req, res) => {
+  .post("/transfer", async (req, res) => {
     try {
       const { senderSecretKey, recipientAddress, mintAddress } = req.body;
 
       await transferNft(senderSecretKey, recipientAddress, mintAddress);
 
-      res.status(200).json({ message: `NFT of mint ${mintAddress} transferred to ${recipientAddress} successfully.` });
+      res.status(200).json({ message: `NFT transferred to ${recipientAddress} successfully.` });
     } catch (err) {
-      console.log(err);
+      console.error(err);
       res.status(500).json({ error: "Failed to transfer NFT." });
     }
-  });
+  })
 
-// Get token amount
-app.get("/tokens/:ownerAddress", async (req, res) => {
-  try {
-    const { ownerAddress } = req.params;
-
-    const amount = await getTokens(ownerAddress);
-
-    res.status(200).json({ amount });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ error: "Failed to retrieve tokens." });
-  }
-});
-
-// Airdrop tokens
-app.post("/airdrop", async (req, res) => {
-  try {
-    const { recipientAddress, amount } = req.body;
-
-    await mintTokens(recipientAddress, amount);
-
-    res.status(200).json({ message: `${amount} tokens airdropped to ${recipientAddress} successfully.` });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ error: "Failed to airdrop tokens." });
-  }
-});
-
-app.use("/nft", nftRouter);
-app.use("/transfer", transferRouter);
+app.use("/api/mint", mintRouter);
+app.use("/api/nft", nftRouter);
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

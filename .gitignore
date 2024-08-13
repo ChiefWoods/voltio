@@ -1,2 +1,5 @@
 .env
 test-ledger
+voltio-*.json
+sugar.log
+*.so

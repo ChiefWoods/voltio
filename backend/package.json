@@ -1,29 +1,21 @@
 {
   "name": "voltio-backend",
   "version": "1.0.0",
-  "description": "",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/index.js",
-    "getMint": "node src/get-mint.js",
-    "mintTo": "node src/mint-token.js",
-    "upload": "node src/upload-asset.js",
-    "setTokenMetadata": "node src/set-token-metadata.js",
-    "createCollection": "node src/create-collection.js",
-    "mintNft": "node src/mint-nft.js",
-    "transferTokens": "node src/transfer-tokens.js"
+    "start": "node src/index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "@irys/sdk": "^0.2.6",
     "@metaplex-foundation/js": "^0.20.1",
-    "@metaplex-foundation/mpl-token-metadata": "^2.13.0",
+    "@metaplex-foundation/mpl-core": "^1.0.2",
+    "@metaplex-foundation/mpl-token-metadata": "^3.2.1",
+    "@metaplex-foundation/mpl-toolbox": "^0.9.4",
+    "@metaplex-foundation/umi": "^0.9.2",
+    "@metaplex-foundation/umi-bundle-defaults": "^0.9.2",
+    "@metaplex-foundation/umi-uploader-irys": "^0.9.2",
     "@solana-developers/helpers": "^2.3.0",
-    "@solana/spl-token": "^0.4.6",
-    "@solana/web3.js": "^1.94.0",
+    "@solana/web3.js": "^1.95.0",
     "cors": "^2.8.5",
     "express": "^4.19.2"
   }
